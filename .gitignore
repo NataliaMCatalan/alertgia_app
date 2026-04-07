@@ -1,0 +1,30 @@
+# Build outputs
+/build/
+/app/build/
+/app/release/
+*.apk
+
+# Models tracked via Git LFS (see .gitattributes)
+*.ptl
+
+# Training data & environment
+/training_data/
+/ml_env/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+*.iml
+local.properties
+
+# Gradle
+.gradle/
+/gradle/wrapper/gradle-wrapper.jar
+
+# macOS
+.DS_Store
+
+# Temp
+/tmp/
+*.output

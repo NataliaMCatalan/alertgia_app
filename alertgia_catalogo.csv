@@ -1,0 +1,384 @@
+Nombre (ES),Nombre (EN),Alérgenos (ES),Allergens (EN),Categoría (ES),Category (EN)
+Ala de pollo,Chicken Wing,-,-,Ingrediente - Carne,Ingredient - Meat
+Bacon,Bacon,-,-,Ingrediente - Carne,Ingredient - Meat
+Carne picada,Ground Beef,-,-,Ingrediente - Carne,Ingredient - Meat
+Cerdo,Pork,-,-,Ingrediente - Carne,Ingredient - Meat
+Chuleta de cordero,Lamb Chop,-,-,Ingrediente - Carne,Ingredient - Meat
+Conejo,Rabbit,-,-,Ingrediente - Carne,Ingredient - Meat
+Cordero,Lamb,-,-,Ingrediente - Carne,Ingredient - Meat
+Filete de ternera,Beef Steak,-,-,Ingrediente - Carne,Ingredient - Meat
+Hígado,Liver,-,-,Ingrediente - Carne,Ingredient - Meat
+Jamón cocido,Ham,-,-,Ingrediente - Carne,Ingredient - Meat
+Muslo de pollo,Chicken Thigh,-,-,Ingrediente - Carne,Ingredient - Meat
+Panceta,Pork Belly,-,-,Ingrediente - Carne,Ingredient - Meat
+Panceta italiana,Pancetta,-,-,Ingrediente - Carne,Ingredient - Meat
+Pato,Duck,-,-,Ingrediente - Carne,Ingredient - Meat
+Pavo,Turkey,-,-,Ingrediente - Carne,Ingredient - Meat
+Pechuga de pollo,Chicken Breast,-,-,Ingrediente - Carne,Ingredient - Meat
+Pierna de cordero,Lamb Leg,-,-,Ingrediente - Carne,Ingredient - Meat
+Pollo,Chicken Meat,-,-,Ingrediente - Carne,Ingredient - Meat
+Prosciutto,Prosciutto,-,-,Ingrediente - Carne,Ingredient - Meat
+Salami,Salami,-,-,Ingrediente - Carne,Ingredient - Meat
+Salchicha,Sausage,-,-,Ingrediente - Carne,Ingredient - Meat
+Ternera,Beef,-,-,Ingrediente - Carne,Ingredient - Meat
+Ternera lechal,Veal,-,-,Ingrediente - Carne,Ingredient - Meat
+Venado,Venison,-,-,Ingrediente - Carne,Ingredient - Meat
+Arroz,Rice,-,-,Ingrediente - Cereales,Ingredient - Grains & Bread
+Avena,Oat,Gluten,Gluten,Ingrediente - Cereales,Ingredient - Grains & Bread
+Bagel,Bagel,"Trigo, Gluten, Sésamo","Wheat, Gluten, Sesame",Ingrediente - Cereales,Ingredient - Grains & Bread
+Baguette,Baguette,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Cebada,Barley,Gluten,Gluten,Ingrediente - Cereales,Ingredient - Grains & Bread
+Croissant,Croissant,"Trigo, Gluten, Leche, Huevos","Wheat, Gluten, Milk, Eggs",Ingrediente - Cereales,Ingredient - Grains & Bread
+Fideos,Noodle,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Ingrediente - Cereales,Ingredient - Grains & Bread
+Harina,Flour,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Harina de maíz,Cornmeal,Maíz,Corn,Ingrediente - Cereales,Ingredient - Grains & Bread
+Maíz,Corn,Maíz,Corn,Ingrediente - Cereales,Ingredient - Grains & Bread
+Pan,Bread,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Pan de masa madre,Sourdough,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Pan de pita,Pita Bread,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Pasta,Pasta,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Ingrediente - Cereales,Ingredient - Grains & Bread
+Quinoa,Quinoa,-,-,Ingrediente - Cereales,Ingredient - Grains & Bread
+Seitán,Seitan,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Tapioca,Tapioca,-,-,Ingrediente - Cereales,Ingredient - Grains & Bread
+Tortilla (wrap),Tortilla,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Trigo,Wheat,"Trigo, Gluten","Wheat, Gluten",Ingrediente - Cereales,Ingredient - Grains & Bread
+Trigo sarraceno,Buckwheat,Trigo sarraceno,Buckwheat,Ingrediente - Cereales,Ingredient - Grains & Bread
+Alioli,Aioli,Huevos,Eggs,Ingrediente - Condimento,Ingredient - Condiment
+Ketchup,Ketchup,-,-,Ingrediente - Condimento,Ingredient - Condiment
+Mantequilla de cacahuete,Peanut Butter,Cacahuetes,Peanuts,Ingrediente - Condimento,Ingredient - Condiment
+Mayonesa,Mayonnaise,Huevos,Eggs,Ingrediente - Condimento,Ingredient - Condiment
+Mostaza,Mustard Sauce,Mostaza,Mustard,Ingrediente - Condimento,Ingredient - Condiment
+Nutella,Nutella,"Leche, Frutos secos","Milk, Tree Nuts",Ingrediente - Condimento,Ingredient - Condiment
+Pesto,Pesto,"Leche, Frutos secos","Milk, Tree Nuts",Ingrediente - Condimento,Ingredient - Condiment
+Romesco,Romesco,Frutos secos,Tree Nuts,Ingrediente - Condimento,Ingredient - Condiment
+Salsa Worcestershire,Worcestershire,Pescado,Fish,Ingrediente - Condimento,Ingredient - Condiment
+Salsa de ostras,Oyster Sauce,Marisco,Shellfish,Ingrediente - Condimento,Ingredient - Condiment
+Salsa de pescado,Fish Sauce,Pescado,Fish,Ingrediente - Condimento,Ingredient - Condiment
+Salsa picante,Hot Sauce,-,-,Ingrediente - Condimento,Ingredient - Condiment
+Tahini,Tahini,Sésamo,Sesame,Ingrediente - Condimento,Ingredient - Condiment
+Vinagre,Vinegar,Sulfitos,Sulfites,Ingrediente - Condimento,Ingredient - Condiment
+Vinagre balsámico,Balsamic Vinegar,Sulfitos,Sulfites,Ingrediente - Condimento,Ingredient - Condiment
+Aceite de oliva,Olive Oil,-,-,Ingrediente - Especia,Ingredient - Spice
+Azafrán,Saffron,-,-,Ingrediente - Especia,Ingredient - Spice
+Azúcar,Sugar,-,-,Ingrediente - Especia,Ingredient - Spice
+Canela,Cinnamon,-,-,Ingrediente - Especia,Ingredient - Spice
+Chocolate,Chocolate,"Leche, Soja","Milk, Soy",Ingrediente - Especia,Ingredient - Spice
+Comino,Cumin,-,-,Ingrediente - Especia,Ingredient - Spice
+Curry en polvo,Curry Powder,Mostaza,Mustard,Ingrediente - Especia,Ingredient - Spice
+Gelatina,Gelatin,-,-,Ingrediente - Especia,Ingredient - Spice
+Miel,Honey,-,-,Ingrediente - Especia,Ingredient - Spice
+Pimentón,Paprika,-,-,Ingrediente - Especia,Ingredient - Spice
+Pimentón ahumado,Smoked Paprika,-,-,Ingrediente - Especia,Ingredient - Spice
+Pimienta negra,Black Pepper,-,-,Ingrediente - Especia,Ingredient - Spice
+Sal,Salt,-,-,Ingrediente - Especia,Ingredient - Spice
+Vainilla,Vanilla,-,-,Ingrediente - Especia,Ingredient - Spice
+Za'atar,Za Atar,Sésamo,Sesame,Ingrediente - Especia,Ingredient - Spice
+Aguacate,Avocado,Látex (reactividad cruzada),Latex (food cross-reactive),Ingrediente - Fruta,Ingredient - Fruit
+Albaricoque,Apricot,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Arándano,Blueberry,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Arándano rojo,Cranberry,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Caqui,Persimmon,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Cereza,Cherry,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Ciruela,Plum,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Ciruela pasa,Prune,Sulfitos,Sulfites,Ingrediente - Fruta,Ingredient - Fruit
+Dátil,Date,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Frambuesa,Raspberry,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Fresa,Strawberry,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Granada,Pomegranate,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Guayaba,Guava,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Higo,Fig,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Kiwi,Kiwi,Látex (reactividad cruzada),Latex (food cross-reactive),Ingrediente - Fruta,Ingredient - Fruit
+Lichi,Lychee,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Lima,Lime,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Limón,Lemon,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Mandarina,Tangerine,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Mango,Mango,Látex (reactividad cruzada),Latex (food cross-reactive),Ingrediente - Fruta,Ingredient - Fruit
+Manzana,Apple,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Maracuyá,Passion Fruit,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Melocotón,Peach,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Melón,Melon,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Mora,Blackberry,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Naranja,Orange,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Papaya,Papaya,Látex (reactividad cruzada),Latex (food cross-reactive),Ingrediente - Fruta,Ingredient - Fruit
+Pasa,Raisin,Sulfitos,Sulfites,Ingrediente - Fruta,Ingredient - Fruit
+Pera,Pear,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Pitahaya,Dragonfruit,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Piña,Pineapple,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Plátano,Banana,Látex (reactividad cruzada),Latex (food cross-reactive),Ingrediente - Fruta,Ingredient - Fruit
+Pomelo,Grapefruit,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Sandía,Watermelon,-,-,Ingrediente - Fruta,Ingredient - Fruit
+Uva,Grape,Sulfitos,Sulfites,Ingrediente - Fruta,Ingredient - Fruit
+Almendra,Almond,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Anacardo,Cashew,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Avellana,Hazelnut,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Cacahuete,Peanut,Cacahuetes,Peanuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Coco,Coconut,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Macadamia,Macadamia,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Nuez,Walnut,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Nuez de Brasil,Brazil Nut,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Nuez pecana,Pecan,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Pistacho,Pistachio,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Piñón,Pine Nut,Frutos secos,Tree Nuts,Ingrediente - Frutos secos,Ingredient - Nuts
+Altramuz,Lupin,"Altramuz, Legumbres","Lupin, Legumes",Ingrediente - Legumbres,Ingredient - Legumes
+Alubia roja,Kidney Bean,Legumbres,Legumes,Ingrediente - Legumbres,Ingredient - Legumes
+Garbanzo,Chickpea,"Garbanzos, Legumbres","Chickpeas, Legumes",Ingrediente - Legumbres,Ingredient - Legumes
+Guisante,Green Pea,Legumbres,Legumes,Ingrediente - Legumbres,Ingredient - Legumes
+Judía verde,Green Bean,Legumbres,Legumes,Ingrediente - Legumbres,Ingredient - Legumes
+Lenteja,Lentil,"Lentejas, Legumbres","Lentils, Legumes",Ingrediente - Legumbres,Ingredient - Legumes
+Bola de helado,Ice Cream Scoop,"Huevos, Leche","Eggs, Milk",Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Brie,Brie,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Cheddar,Cheddar,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Crema agria,Sour Cream,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Feta,Feta,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Ghee,Ghee,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Gouda,Gouda,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Huevo,Egg,Huevos,Eggs,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Leche,Milk,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Leche condensada,Condensed Milk,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Mantequilla,Butter,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Mozzarella,Mozzarella,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Nata,Cream,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Nata para montar,Heavy Cream,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Parmesano,Parmesan,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Queso,Cheese,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Queso azul,Blue Cheese,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Queso crema,Cream Cheese,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Queso de cabra,Goat Cheese,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Ricotta,Ricotta,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Suero de leche,Whey,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Yogur,Yogurt,Leche,Milk,Ingrediente - Lácteos y huevos,Ingredient - Dairy & Eggs
+Almeja,Clam,"Marisco, Moluscos","Shellfish, Mollusks",Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Anchoa,Anchovy,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Anguila,Eel,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Arenque,Herring,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Atún,Tuna,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Bacalao,Cod,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Bagre,Catfish,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Berberecho,Cockle,"Marisco, Moluscos","Shellfish, Mollusks",Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Caballa,Mackerel,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Calamar,Squid,"Marisco, Moluscos","Shellfish, Mollusks",Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Cangrejo,Crab,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Cangrejo de río,Crayfish,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Cigala,Langoustine,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Erizo de mar,Sea Urchin,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Gamba,Shrimp,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Langosta,Lobster,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Langostino,Prawn,Marisco,Shellfish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Lubina,Sea Bass,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Mejillón,Mussel,"Marisco, Moluscos","Shellfish, Mollusks",Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Merluza,Hake,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Perca,Perch,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Pez espada,Swordfish,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Pulpo,Octopus,"Marisco, Moluscos","Shellfish, Mollusks",Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Rape,Monkfish,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Salmón,Salmon,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Sardina,Sardine,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Tilapia,Tilapia,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Trucha,Trout,Pescado,Fish,Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Vieira,Scallop,"Marisco, Moluscos","Shellfish, Mollusks",Ingrediente - Pescado y marisco,Ingredient - Fish & Seafood
+Chía,Chia Seed,-,-,Ingrediente - Semillas,Ingredient - Seeds
+Linaza,Flaxseed,-,-,Ingrediente - Semillas,Ingredient - Seeds
+Pipa de girasol,Sunflower Seed,-,-,Ingrediente - Semillas,Ingredient - Seeds
+Semilla de amapola,Poppy Seed,-,-,Ingrediente - Semillas,Ingredient - Seeds
+Semilla de mostaza,Mustard Seed,Mostaza,Mustard,Ingrediente - Semillas,Ingredient - Seeds
+Sésamo,Sesame,Sésamo,Sesame,Ingrediente - Semillas,Ingredient - Seeds
+Miso,Miso,Soja,Soy,Ingrediente - Soja,Ingredient - Soy
+Salsa de soja,Soy Sauce,"Soja, Trigo, Gluten","Soy, Wheat, Gluten",Ingrediente - Soja,Ingredient - Soy
+Soja,Soybean,Soja,Soy,Ingrediente - Soja,Ingredient - Soy
+Tempeh,Tempeh,Soja,Soy,Ingrediente - Soja,Ingredient - Soy
+Tofu,Tofu,Soja,Soy,Ingrediente - Soja,Ingredient - Soy
+Ajo,Garlic,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Alcachofa,Artichoke,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Apio,Celery,Apio,Celery,Ingrediente - Verdura,Ingredient - Vegetable
+Berenjena,Eggplant,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Boniato,Sweet Potato,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Brócoli,Broccoli,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Calabacín,Zucchini,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Calabaza,Pumpkin,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Cebolla,Onion,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Champiñón,Mushroom,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Chile,Chili Pepper,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Col,Cabbage,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Coliflor,Cauliflower,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Espinacas,Spinach,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Espárrago,Asparagus,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Hinojo,Fennel,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Hojas de mostaza,Mustard Greens,Mostaza,Mustard,Ingrediente - Verdura,Ingredient - Vegetable
+Jalapeño,Jalapeno,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Jengibre,Ginger,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Kale,Kale,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Lechuga,Lettuce,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Nabo,Turnip,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Okra,Okra,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Patata,Potato,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Pepino,Cucumber,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Pimiento,Bell Pepper,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Puerro,Leek,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Remolacha,Beet,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Rábano,Radish,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Tomate,Tomato,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Zanahoria,Carrot,-,-,Ingrediente - Verdura,Ingredient - Vegetable
+Arroz negro,Arroz Negro,"Pescado, Marisco","Fish, Shellfish",Plato español,Spanish dish
+Callos,Callos,-,-,Plato español,Spanish dish
+Calçots,Calcots,-,-,Plato español,Spanish dish
+Chorizo,Chorizo,-,-,Plato español,Spanish dish
+Churros,Churros,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato español,Spanish dish
+Churros con chocolate,Churros Chocolate,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato español,Spanish dish
+Cochinillo asado,Cochinillo,-,-,Plato español,Spanish dish
+Crema catalana,Crema Catalana,"Huevos, Leche","Eggs, Milk",Plato español,Spanish dish
+Croquetas,Croquetas,"Huevos, Gluten, Leche, Trigo","Eggs, Gluten, Milk, Wheat",Plato español,Spanish dish
+Empanada gallega,Empanada Gallega,"Trigo, Gluten","Wheat, Gluten",Plato español,Spanish dish
+Escalivada,Escalivada,-,-,Plato español,Spanish dish
+Fabada asturiana,Fabada,Legumbres,Legumes,Plato español,Spanish dish
+Fideuá,Fideuà,"Gluten, Marisco, Trigo","Gluten, Shellfish, Wheat",Plato español,Spanish dish
+Flan,Flan Espanol,"Huevos, Leche","Eggs, Milk",Plato español,Spanish dish
+Gambas al ajillo,Gambas Ajillo,Marisco,Shellfish,Plato español,Spanish dish
+Gazpacho,Gazpacho,-,-,Plato español,Spanish dish
+Jamón ibérico,Jamon Iberico,-,-,Plato español,Spanish dish
+Lomo embuchado,Lomo,-,-,Plato español,Spanish dish
+Migas,Migas,"Trigo, Gluten","Wheat, Gluten",Plato español,Spanish dish
+Morcilla,Morcilla,-,-,Plato español,Spanish dish
+Pa amb tomàquet,Pa Amb Tomaquet,"Trigo, Gluten","Wheat, Gluten",Plato español,Spanish dish
+Paella,Paella,"Marisco, Pescado","Shellfish, Fish",Plato español,Spanish dish
+Patatas bravas,Patatas Bravas,-,-,Plato español,Spanish dish
+Pimientos de padrón,Pimientos Padron,-,-,Plato español,Spanish dish
+Pintxos,Pintxos,-,-,Plato español,Spanish dish
+Pisto manchego,Pisto,-,-,Plato español,Spanish dish
+Pulpo a la gallega,Pulpo Gallego,Moluscos,Mollusks,Plato español,Spanish dish
+Queso manchego,Manchego,Leche,Milk,Plato español,Spanish dish
+Salchichón,Salchichon,-,-,Plato español,Spanish dish
+Salmorejo,Salmorejo,"Trigo, Gluten","Wheat, Gluten",Plato español,Spanish dish
+Tarta de Santiago,Tarta Santiago,"Huevos, Frutos secos","Eggs, Tree Nuts",Plato español,Spanish dish
+Tortilla española,Tortilla Espanola,Huevos,Eggs,Plato español,Spanish dish
+Alitas de pollo,Chicken Wings,"Trigo, Gluten, Huevos, Soja","Wheat, Gluten, Eggs, Soy",Plato internacional,International dish
+Arepa,Arepa,Maíz,Corn,Plato internacional,International dish
+Aros de cebolla,Onion Rings,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Arroz frito,Fried Rice,"Huevos, Soja","Eggs, Soy",Plato internacional,International dish
+Arroz jollof,Jollof Rice,-,-,Plato internacional,International dish
+Baklava,Baklava,"Frutos secos, Trigo, Gluten, Huevos","Tree Nuts, Wheat, Gluten, Eggs",Plato internacional,International dish
+Bibimbap,Bibimbap,"Huevos, Soja, Sésamo","Eggs, Soy, Sesame",Plato internacional,International dish
+Biryani,Biryani,-,-,Plato internacional,International dish
+Bisque de langosta,Lobster Bisque,"Marisco, Leche","Shellfish, Milk",Plato internacional,International dish
+Borscht,Borscht,-,-,Plato internacional,International dish
+Bratwurst,Bratwurst,-,-,Plato internacional,International dish
+Bruschetta,Bruschetta,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Burrito,Burrito Dish,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Burrito de desayuno,Breakfast Burrito,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Buñuelos,Beignets,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Bánh mì,Banh Mi,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Calamares fritos,Fried Calamari,"Marisco, Trigo, Gluten, Huevos","Shellfish, Wheat, Gluten, Eggs",Plato internacional,International dish
+Cannoli,Cannoli,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Caracoles,Escargots,"Leche, Moluscos","Milk, Mollusks",Plato internacional,International dish
+Carpaccio de ternera,Beef Carpaccio,Huevos,Eggs,Plato internacional,International dish
+Ceviche,Ceviche,"Pescado, Marisco","Fish, Shellfish",Plato internacional,International dish
+Chuleta de cerdo,Pork Chop,-,-,Plato internacional,International dish
+Costillar,Prime Rib,-,-,Plato internacional,International dish
+Costillas de cerdo,Baby Back Ribs,Soja,Soy,Plato internacional,International dish
+Croque madame,Croque Madame,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Crème brûlée,Creme Brulee,"Huevos, Leche","Eggs, Milk",Plato internacional,International dish
+Cupcakes,Cup Cakes,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Curry,Curry Dish,-,-,Plato internacional,International dish
+Curry de pollo,Chicken Curry,Leche,Milk,Plato internacional,International dish
+Cuscús,Couscous Dish,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Dal de lentejas,Dal,"Legumbres, Lentejas","Legumes, Lentils",Plato internacional,International dish
+Dim sum,Dim Sum,"Trigo, Gluten, Soja","Wheat, Gluten, Soy",Plato internacional,International dish
+Donuts,Donuts,"Trigo, Gluten, Huevos, Leche, Soja","Wheat, Gluten, Eggs, Milk, Soy",Plato internacional,International dish
+Dumplings,Dumplings,"Trigo, Gluten, Soja, Sésamo","Wheat, Gluten, Soy, Sesame",Plato internacional,International dish
+Edamame,Edamame,Soja,Soy,Plato internacional,International dish
+Empanada,Empanada,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Enchilada,Enchilada,"Maíz, Leche","Corn, Milk",Plato internacional,International dish
+Ensalada César,Caesar Salad,"Huevos, Pescado, Gluten, Leche","Eggs, Fish, Gluten, Milk",Plato internacional,International dish
+Ensalada caprese,Caprese Salad,Leche,Milk,Plato internacional,International dish
+Ensalada de algas,Seaweed Salad,"Soja, Sésamo","Soy, Sesame",Plato internacional,International dish
+Ensalada de remolacha,Beet Salad,Frutos secos,Tree Nuts,Plato internacional,International dish
+Ensalada griega,Greek Salad,Leche,Milk,Plato internacional,International dish
+Espaguetis boloñesa,Spaghetti Bolognese,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Espaguetis carbonara,Spaghetti Carbonara,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Falafel,Falafel,"Trigo, Gluten, Sésamo, Garbanzos, Legumbres","Wheat, Gluten, Sesame, Chickpeas, Legumes",Plato internacional,International dish
+Filete,Steak,-,-,Plato internacional,International dish
+Filete mignon,Filet Mignon,-,-,Plato internacional,International dish
+Fish and chips,Fish And Chips,"Pescado, Trigo, Gluten, Huevos","Fish, Wheat, Gluten, Eggs",Plato internacional,International dish
+Foie gras,Foie Gras,-,-,Plato internacional,International dish
+Gambas con sémola,Shrimp And Grits,"Marisco, Leche, Maíz","Shellfish, Milk, Corn",Plato internacional,International dish
+Gofres,Waffles,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Guacamole,Guacamole,-,-,Plato internacional,International dish
+Gyoza,Gyoza,"Trigo, Gluten, Soja, Sésamo","Wheat, Gluten, Soy, Sesame",Plato internacional,International dish
+Hamburguesa,Hamburger,"Trigo, Gluten, Huevos, Leche, Sésamo","Wheat, Gluten, Eggs, Milk, Sesame",Plato internacional,International dish
+Helado,Ice Cream,"Leche, Huevos, Soja","Milk, Eggs, Soy",Plato internacional,International dish
+Huevos benedictinos,Eggs Benedict,"Huevos, Trigo, Gluten, Leche","Eggs, Wheat, Gluten, Milk",Plato internacional,International dish
+Huevos rancheros,Huevos Rancheros,"Huevos, Leche","Eggs, Milk",Plato internacional,International dish
+Huevos rellenos,Deviled Eggs,Huevos,Eggs,Plato internacional,International dish
+Hummus,Hummus,"Sésamo, Garbanzos","Sesame, Chickpeas",Plato internacional,International dish
+Injera,Injera,-,-,Plato internacional,International dish
+Kebab,Kebab,-,-,Plato internacional,International dish
+Kimchi,Kimchi,-,-,Plato internacional,International dish
+Lasaña,Lasagna,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Macarons,Macarons,"Huevos, Frutos secos, Leche","Eggs, Tree Nuts, Milk",Plato internacional,International dish
+Macarrones con queso,Macaroni And Cheese,"Trigo, Gluten, Leche, Huevos","Wheat, Gluten, Milk, Eggs",Plato internacional,International dish
+Maki sushi,Sushi Roll,"Pescado, Soja, Sésamo","Fish, Soy, Sesame",Plato internacional,International dish
+Mejillones,Mussels,"Marisco, Moluscos, Leche","Shellfish, Mollusks, Milk",Plato internacional,International dish
+Mousse de chocolate,Chocolate Mousse,"Huevos, Leche, Soja","Eggs, Milk, Soy",Plato internacional,International dish
+Musaka,Moussaka,"Huevos, Leche","Eggs, Milk",Plato internacional,International dish
+Nachos,Nachos,"Leche, Maíz","Milk, Corn",Plato internacional,International dish
+Okonomiyaki,Okonomiyaki,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Plato internacional,International dish
+Ostras,Oysters,"Marisco, Moluscos","Shellfish, Mollusks",Plato internacional,International dish
+Pad thai,Pad Thai,"Cacahuetes, Marisco, Huevos, Pescado, Soja","Peanuts, Shellfish, Eggs, Fish, Soy",Plato internacional,International dish
+Pan de ajo,Garlic Bread,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Pan naan,Naan Bread,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Panna cotta,Panna Cotta,Leche,Milk,Plato internacional,International dish
+Pasteles de cangrejo,Crab Cakes,"Marisco, Trigo, Gluten, Huevos","Shellfish, Wheat, Gluten, Eggs",Plato internacional,International dish
+Patatas fritas,French Fries,Gluten,Gluten,Plato internacional,International dish
+Pato pekín,Peking Duck,"Trigo, Gluten, Soja","Wheat, Gluten, Soy",Plato internacional,International dish
+Perrito caliente,Hot Dog,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Pho,Pho,"Soja, Pescado","Soy, Fish",Plato internacional,International dish
+Pierogi,Pierogi,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Plato internacional,International dish
+Pizza,Pizza,"Trigo, Gluten, Leche, Huevos","Wheat, Gluten, Milk, Eggs",Plato internacional,International dish
+Poutine,Poutine,"Leche, Gluten, Trigo","Milk, Gluten, Wheat",Plato internacional,International dish
+Pudín de pan,Bread Pudding,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Pupusa,Pupusa,Maíz,Corn,Plato internacional,International dish
+Quesadilla,Quesadilla,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Quesadilla de pollo,Chicken Quesadilla,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Ramen,Ramen,"Trigo, Gluten, Huevos, Soja","Wheat, Gluten, Eggs, Soy",Plato internacional,International dish
+Ravioli,Ravioli,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Rendang,Rendang,-,-,Plato internacional,International dish
+Risotto,Risotto,Leche,Milk,Plato internacional,International dish
+Rollitos de primavera,Spring Rolls,"Trigo, Gluten, Soja, Marisco","Wheat, Gluten, Soy, Shellfish",Plato internacional,International dish
+Salmón a la plancha,Grilled Salmon,Pescado,Fish,Plato internacional,International dish
+Samosa,Samosa,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Sashimi,Sashimi,"Pescado, Soja","Fish, Soy",Plato internacional,International dish
+Satay,Satay,Cacahuetes,Peanuts,Plato internacional,International dish
+Schnitzel,Schnitzel,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Plato internacional,International dish
+Shawarma,Shawarma,-,-,Plato internacional,International dish
+Sopa agripicante,Hot And Sour Soup,"Soja, Huevos","Soy, Eggs",Plato internacional,International dish
+Sopa de almejas,Clam Chowder,"Marisco, Leche, Trigo, Gluten","Shellfish, Milk, Wheat, Gluten",Plato internacional,International dish
+Sopa de cebolla,French Onion Soup,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Sopa de miso,Miso Soup,"Soja, Pescado","Soy, Fish",Plato internacional,International dish
+Souvlaki,Souvlaki,-,-,Plato internacional,International dish
+Steak tartar,Beef Tartare,Huevos,Eggs,Plato internacional,International dish
+Sushi,Sushi,"Pescado, Marisco, Soja, Sésamo","Fish, Shellfish, Soy, Sesame",Plato internacional,International dish
+Sándwich club,Club Sandwich,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Plato internacional,International dish
+Sándwich de cerdo,Pulled Pork Sandwich,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Sándwich de langosta,Lobster Roll Sandwich,"Marisco, Trigo, Gluten, Leche","Shellfish, Wheat, Gluten, Milk",Plato internacional,International dish
+Sándwich de queso,Grilled Cheese Sandwich,"Trigo, Gluten, Leche","Wheat, Gluten, Milk",Plato internacional,International dish
+Tabla de quesos,Cheese Plate,Leche,Milk,Plato internacional,International dish
+Tabulé,Tabbouleh,"Trigo, Gluten","Wheat, Gluten",Plato internacional,International dish
+Tacos,Tacos,"Maíz, Leche","Corn, Milk",Plato internacional,International dish
+Tajín,Tagine,-,-,Plato internacional,International dish
+Takoyaki,Takoyaki,"Trigo, Gluten, Huevos, Marisco","Wheat, Gluten, Eggs, Shellfish",Plato internacional,International dish
+Tamal,Tamale,Maíz,Corn,Plato internacional,International dish
+Tarta de chocolate,Chocolate Cake,"Trigo, Gluten, Huevos, Leche, Soja","Wheat, Gluten, Eggs, Milk, Soy",Plato internacional,International dish
+Tarta de fresas,Strawberry Shortcake,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Tarta de manzana,Apple Pie,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Tarta de queso,Cheesecake,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Tarta de zanahoria,Carrot Cake,"Trigo, Gluten, Huevos, Leche, Frutos secos","Wheat, Gluten, Eggs, Milk, Tree Nuts",Plato internacional,International dish
+Tarta red velvet,Red Velvet Cake,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Tartar de atún,Tuna Tartare,"Pescado, Soja, Sésamo","Fish, Soy, Sesame",Plato internacional,International dish
+Tempura,Tempura,"Trigo, Gluten, Huevos","Wheat, Gluten, Eggs",Plato internacional,International dish
+Tikka masala,Tikka Masala,Leche,Milk,Plato internacional,International dish
+Tiramisú,Tiramisu,"Huevos, Leche, Trigo, Gluten","Eggs, Milk, Wheat, Gluten",Plato internacional,International dish
+Torrijas,French Toast,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Tortilla francesa,Omelette,"Huevos, Leche","Eggs, Milk",Plato internacional,International dish
+Tortitas,Pancakes,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish
+Vieiras,Scallops,"Marisco, Moluscos","Shellfish, Mollusks",Plato internacional,International dish
+Yogur helado,Frozen Yogurt,Leche,Milk,Plato internacional,International dish
+Ñoquis,Gnocchi,"Trigo, Gluten, Huevos, Leche","Wheat, Gluten, Eggs, Milk",Plato internacional,International dish

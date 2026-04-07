@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alertgia</string>
+    <string name="profile_list_title">Perfiles</string>
+    <string name="add_profile">Añadir Perfil</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="profile_name">Nombre del Perfil</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="scan">Escanear</string>
+    <string name="retake">Repetir</string>
+    <string name="analyze">Analizar</string>
+    <string name="scan_another">Escanear Otro</string>
+    <string name="analyzing">Analizando imagen en busca de alérgenos…</string>
+    <string name="camera_permission_required">Se necesita permiso de cámara para escanear alimentos en busca de alérgenos.</string>
+    <string name="grant_permission">Conceder Permiso</string>
+    <string name="open_settings">Abrir Ajustes</string>
+    <string name="no_profiles">No hay perfiles todavía. ¡Crea uno para empezar!</string>
+    <string name="common_allergens">Alérgenos Comunes</string>
+    <string name="custom_allergen">Añadir alérgeno personalizado</string>
+    <string name="select_profile">Selecciona un perfil para empezar a escanear</string>
+    <string name="safe">Seguro</string>
+    <string name="warning">Precaución</string>
+    <string name="danger">Peligro</string>
+    <string name="detected_allergens">Alérgenos Detectados</string>
+    <string name="identified_ingredients">Ingredientes Identificados</string>
+    <string name="explanation">Explicación</string>
+    <string name="recommendations">Recomendaciones</string>
+    <string name="confidence">Confianza</string>
+    <string name="error_analysis">Error al analizar la imagen. Inténtalo de nuevo.</string>
+    <string name="retry">Reintentar</string>
+    <string name="delete_profile_confirm">¿Estás seguro de que quieres eliminar este perfil?</string>
+    <string name="no_allergies_configured">Sin alergias configuradas</string>
+</resources>
