@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.LocalHospital
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -31,8 +32,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import com.alertgia.app.ui.theme.AlertgiaGreen
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alertgia.app.ui.components.ProfileCard
@@ -45,6 +52,7 @@ fun ProfileListScreen(
     onNavigateToMenuScanner: (Long) -> Unit = {},
     onNavigateToNearby: () -> Unit = {},
     onNavigateToSettings: () -> Unit = {},
+    onNavigateToScore: () -> Unit = {},
     viewModel: ProfileListViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -52,12 +60,28 @@ fun ProfileListScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Alertgia") },
+                title = {
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                                append("Alertg")
+                            }
+                            withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) {
+                                append("IA")
+                            }
+                        }
+                    )
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = com.alertgia.app.ui.theme.NavyDeep,
+                    titleContentColor = Color.White,
+                    actionIconContentColor = Color.White,
+                    navigationIconContentColor = Color.White
                 ),
                 actions = {
+                    IconButton(onClick = onNavigateToScore) {
+                        Icon(Icons.Default.Star, contentDescription = "AlertgIA Score", tint = MaterialTheme.colorScheme.onPrimaryContainer)
+                    }
                     IconButton(onClick = onNavigateToNearby) {
                         Icon(Icons.Default.LocalHospital, contentDescription = "Nearby help", tint = MaterialTheme.colorScheme.onPrimaryContainer)
                     }

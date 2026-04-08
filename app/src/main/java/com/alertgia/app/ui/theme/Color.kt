@@ -2,6 +2,15 @@ package com.alertgia.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+// AlertgIA brand colors
+val NavyDeep = Color(0xFF0B1829)
+val NavyMid = Color(0xFF1A2E45)
+val NavyLight = Color(0xFF2A4A6B)
+val AlertgiaGreen = Color(0xFF6AAF4B)
+val AlertgiaGreenLight = Color(0xFF8BC870)
+val AlertgiaGreenDark = Color(0xFF4D8A33)
+
+// Legacy teal (kept for compatibility)
 val Teal80 = Color(0xFFB2DFDB)
 val Teal40 = Color(0xFF009688)
 val Teal30 = Color(0xFF00796B)

@@ -12,31 +12,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val LightColorScheme = lightColorScheme(
-    primary = Teal40,
+    primary = AlertgiaGreen,
     onPrimary = Color.White,
-    primaryContainer = Teal80,
-    onPrimaryContainer = Teal10,
-    secondary = TealGrey40,
+    primaryContainer = AlertgiaGreenLight,
+    onPrimaryContainer = NavyDeep,
+    secondary = NavyMid,
     onSecondary = Color.White,
-    secondaryContainer = TealGrey80,
-    surface = Color(0xFFFBFDF9),
+    secondaryContainer = NavyLight,
+    onSecondaryContainer = Color.White,
+    surface = Color(0xFFF8FAF7),
     onSurface = Color(0xFF1A1C1A),
-    surfaceVariant = Color(0xFFDBE5E0),
-    onSurfaceVariant = Color(0xFF3F4945),
+    surfaceVariant = Color(0xFFE8F0E4),
+    onSurfaceVariant = Color(0xFF3A4A36),
     error = DangerRed
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Teal80,
-    onPrimary = Teal10,
-    primaryContainer = Teal30,
-    onPrimaryContainer = Teal80,
-    secondary = TealGrey80,
-    onSecondary = Color(0xFF1A3A32),
-    secondaryContainer = TealGrey40,
-    surface = Color(0xFF1A1C1A),
+    primary = AlertgiaGreenLight,
+    onPrimary = NavyDeep,
+    primaryContainer = AlertgiaGreenDark,
+    onPrimaryContainer = AlertgiaGreenLight,
+    secondary = NavyLight,
+    onSecondary = Color.White,
+    secondaryContainer = NavyMid,
+    onSecondaryContainer = Color.White,
+    surface = NavyDeep,
     onSurface = Color(0xFFE1E3DF),
-    surfaceVariant = Color(0xFF3F4945),
+    surfaceVariant = NavyMid,
     onSurfaceVariant = Color(0xFFBFC9C3),
     error = Color(0xFFFFB4AB)
 )
@@ -44,7 +46,7 @@ private val DarkColorScheme = darkColorScheme(
 @Composable
 fun AlertgiaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

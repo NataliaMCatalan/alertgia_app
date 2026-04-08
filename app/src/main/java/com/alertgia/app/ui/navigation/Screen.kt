@@ -1,6 +1,8 @@
 package com.alertgia.app.ui.navigation
 
 sealed class Screen(val route: String) {
+    data object Splash : Screen("splash")
+    data object Onboarding : Screen("onboarding")
     data object ProfileList : Screen("profiles")
     data object ProfileEditor : Screen("profile_editor/{profileId}") {
         fun createRoute(profileId: Long = -1L) = "profile_editor/$profileId"
@@ -13,4 +15,5 @@ sealed class Screen(val route: String) {
     }
     data object Nearby : Screen("nearby")
     data object Settings : Screen("settings")
+    data object AlertgiaScore : Screen("alertgia_score")
 }

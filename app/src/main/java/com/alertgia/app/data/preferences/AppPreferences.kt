@@ -21,6 +21,8 @@ class AppPreferences @Inject constructor(
     companion object {
         val LANGUAGE = stringPreferencesKey("language")
         val TTS_ENABLED = booleanPreferencesKey("tts_enabled")
+        val ONBOARDING_COMPLETE = booleanPreferencesKey("onboarding_complete")
+        val RGPD_ACCEPTED = booleanPreferencesKey("rgpd_accepted")
     }
 
     val language: Flow<String> = context.dataStore.data.map { prefs ->
@@ -31,11 +33,27 @@ class AppPreferences @Inject constructor(
         prefs[TTS_ENABLED] ?: false
     }
 
+    val onboardingComplete: Flow<Boolean> = context.dataStore.data.map { prefs ->
+        prefs[ONBOARDING_COMPLETE] ?: false
+    }
+
+    val rgpdAccepted: Flow<Boolean> = context.dataStore.data.map { prefs ->
+        prefs[RGPD_ACCEPTED] ?: false
+    }
+
     suspend fun setLanguage(lang: String) {
         context.dataStore.edit { prefs -> prefs[LANGUAGE] = lang }
     }
 
     suspend fun setTtsEnabled(enabled: Boolean) {
         context.dataStore.edit { prefs -> prefs[TTS_ENABLED] = enabled }
+    }
+
+    suspend fun setOnboardingComplete(complete: Boolean) {
+        context.dataStore.edit { prefs -> prefs[ONBOARDING_COMPLETE] = complete }
+    }
+
+    suspend fun setRgpdAccepted(accepted: Boolean) {
+        context.dataStore.edit { prefs -> prefs[RGPD_ACCEPTED] = accepted }
     }
 }
