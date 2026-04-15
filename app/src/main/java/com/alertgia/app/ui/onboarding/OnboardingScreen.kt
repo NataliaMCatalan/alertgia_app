@@ -19,6 +19,9 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.SmartToy
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.res.painterResource
 import com.alertgia.app.R
 import androidx.compose.material3.Button
@@ -85,12 +88,13 @@ private fun WelcomePage(onNext: () -> Unit) {
         ) {
             Spacer(modifier = Modifier.height(48.dp))
 
-            // App logo — PNG con su propio marco, sin fondo extra
-            Icon(
+            // App logo sin fondo — escala proporcional al ancho
+            Image(
                 painter = painterResource(R.drawable.ic_alertgia_logo),
                 contentDescription = "AlertgIA",
-                tint = Color.Unspecified,
-                modifier = Modifier.size(160.dp)
+                modifier = Modifier
+                    .fillMaxWidth(0.5f)
+                    .padding(bottom = 8.dp)
             )
 
             // Title + subtitle
