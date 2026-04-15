@@ -8,9 +8,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.ui.res.painterResource
 import com.alertgia.app.R
@@ -48,7 +47,7 @@ fun SplashScreen(
 
     LaunchedEffect(Unit) {
         visible = true
-        delay(8000)
+        delay(15000)
         onSplashComplete()
     }
 
@@ -65,9 +64,7 @@ fun SplashScreen(
             Image(
                 painter = painterResource(id = R.drawable.ic_alertgia_logo),
                 contentDescription = "AlertgIA logo",
-                modifier = Modifier
-                    .fillMaxWidth(0.55f)
-                    .padding(bottom = 8.dp)
+                modifier = Modifier.size(120.dp)
             )
             Spacer(modifier = Modifier.height(24.dp))
             Text(

@@ -139,7 +139,7 @@ fun AlertgiaNavHost(
                                     Icons.Default.AccountCircle,
                                     contentDescription = if (isSpanish) "Perfiles" else "Profiles",
                                     tint = AlertgiaGreen,
-                                    modifier = Modifier.size(72.dp)
+                                    modifier = Modifier.size(64.dp)
                                 )
                             }
                         },

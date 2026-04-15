@@ -88,13 +88,11 @@ private fun WelcomePage(onNext: () -> Unit) {
         ) {
             Spacer(modifier = Modifier.height(48.dp))
 
-            // App logo sin fondo — escala proporcional al ancho
+            // App logo sin fondo
             Image(
                 painter = painterResource(R.drawable.ic_alertgia_logo),
                 contentDescription = "AlertgIA",
-                modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .padding(bottom = 8.dp)
+                modifier = Modifier.size(120.dp)
             )
 
             // Title + subtitle
