@@ -38,8 +38,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alertgia.app.data.preferences.AppPreferences
 import com.alertgia.app.ui.camera.CameraScreen
+import com.alertgia.app.ui.profile.ProfileListUiState
+import com.alertgia.app.ui.profile.ProfileListViewModel
 import com.alertgia.app.ui.nearby.NearbyScreen
 import com.alertgia.app.ui.onboarding.OnboardingScreen
 import com.alertgia.app.ui.places.MyPlacesScreen
@@ -87,12 +91,20 @@ private val pinItemColors @Composable get() = NavigationBarItemDefaults.colors(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AlertgiaNavHost() {
+fun AlertgiaNavHost(
+    profileViewModel: ProfileListViewModel = hiltViewModel()
+) {
     val navController       = rememberNavController()
     val context             = LocalContext.current
     val prefs               = remember { AppPreferences(context) }
     val language            by prefs.language.collectAsState(initial = "es")
     val onboardingComplete  by prefs.onboardingComplete.collectAsState(initial = false)
+    val profileUiState      by profileViewModel.uiState.collectAsStateWithLifecycle()
+
+    val firstProfileName = when (val s = profileUiState) {
+        is ProfileListUiState.Success -> s.profiles.firstOrNull()?.name ?: ""
+        else -> ""
+    }
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -115,11 +127,8 @@ fun AlertgiaNavHost() {
                         title = {
                             Text(
                                 text = buildAnnotatedString {
-                                    withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) {
-                                        append("Alertg")
-                                    }
-                                    withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) {
-                                        append("IA")
+                                    withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Normal)) {
+                                        append(if (firstProfileName.isNotBlank()) "Hola, $firstProfileName" else "Hola")
                                     }
                                 }
                             )
@@ -130,7 +139,7 @@ fun AlertgiaNavHost() {
                                     Icons.Default.AccountCircle,
                                     contentDescription = if (isSpanish) "Perfiles" else "Profiles",
                                     tint = AlertgiaGreen,
-                                    modifier = Modifier.size(48.dp)
+                                    modifier = Modifier.size(72.dp)
                                 )
                             }
                         },
