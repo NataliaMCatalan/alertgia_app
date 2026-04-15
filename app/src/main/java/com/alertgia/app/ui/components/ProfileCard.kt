@@ -18,10 +18,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -31,15 +30,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alertgia.app.domain.model.UserProfile
-import com.alertgia.app.ui.theme.AlertgiaGreen
 import com.alertgia.app.ui.theme.NavyBorder
-import com.alertgia.app.ui.theme.NavyGlass
-import com.alertgia.app.ui.theme.NavyLight
 import com.alertgia.app.ui.theme.NavyMid
 import com.alertgia.app.ui.theme.TextPrimary
 import com.alertgia.app.ui.theme.TextSecondary
@@ -48,7 +43,7 @@ import com.alertgia.app.ui.theme.TextSecondary
 @Composable
 fun ProfileCard(
     profile: UserProfile,
-    onScan: () -> Unit,
+    onScan: () -> Unit = {},
     onEdit: () -> Unit,
     onMenuScan: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -66,8 +61,7 @@ fun ProfileCard(
                 ),
                 shape = RoundedCornerShape(20.dp)
             )
-            .clip(RoundedCornerShape(20.dp))
-            .clickable(onClick = onScan),
+            .clip(RoundedCornerShape(20.dp)),
         color = NavyMid,
         shape = RoundedCornerShape(20.dp),
         tonalElevation = 0.dp
@@ -89,124 +83,80 @@ fun ProfileCard(
                     )
             )
 
-            Row(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
-                // Avatar
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .size(52.dp)
-                        .background(
-                            brush = Brush.radialGradient(
-                                colors = listOf(
-                                    Color(profile.avatarColor),
-                                    Color(profile.avatarColor).copy(alpha = 0.6f)
-                                )
-                            ),
-                            shape = CircleShape
-                        )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(
-                        text = profile.name.take(1).uppercase(),
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
-                    )
-                }
-
-                Spacer(modifier = Modifier.width(14.dp))
-
-                // Name + chips
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = profile.name,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = TextPrimary
-                    )
-
-                    Spacer(modifier = Modifier.height(6.dp))
-
-                    if (profile.allergies.isEmpty()) {
+                    // Avatar
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .size(52.dp)
+                            .background(
+                                brush = Brush.radialGradient(
+                                    colors = listOf(
+                                        Color(profile.avatarColor),
+                                        Color(profile.avatarColor).copy(alpha = 0.6f)
+                                    )
+                                ),
+                                shape = CircleShape
+                            )
+                    ) {
                         Text(
-                            text = "Sin alergias configuradas",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = TextSecondary
+                            text = profile.name.take(1).uppercase(),
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
                         )
-                    } else {
-                        FlowRow(
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            profile.allergies.forEach { allergy ->
-                                AllergyChip(name = allergy.name, severity = allergy.severity)
+                    }
+
+                    Spacer(modifier = Modifier.width(14.dp))
+
+                    // Name + allergy chips
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = profile.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = TextPrimary
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        if (profile.allergies.isEmpty()) {
+                            Text(
+                                text = "Sin alergias configuradas",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextSecondary
+                            )
+                        } else {
+                            FlowRow(
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                verticalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                profile.allergies.forEach { allergy ->
+                                    AllergyChip(name = allergy.name, severity = allergy.severity)
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            // Action bar
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(NavyBorder)
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(NavyLight.copy(alpha = 0.5f)),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                CardAction(
-                    icon = Icons.Default.CameraAlt,
-                    label = "Escanear",
-                    tint = AlertgiaGreen,
-                    onClick = onScan,
-                    modifier = Modifier.weight(1f)
-                )
-                Box(modifier = Modifier.width(1.dp).height(44.dp).background(NavyBorder))
-                CardAction(
-                    icon = Icons.Default.MenuBook,
-                    label = "Menú",
-                    tint = Color(0xFF60A5FA),
-                    onClick = onMenuScan,
-                    modifier = Modifier.weight(1f)
-                )
-                Box(modifier = Modifier.width(1.dp).height(44.dp).background(NavyBorder))
-                CardAction(
-                    icon = Icons.Default.Edit,
-                    label = "Editar",
-                    tint = TextSecondary,
+                // Edit icon — top right corner
+                IconButton(
                     onClick = onEdit,
-                    modifier = Modifier.weight(1f)
-                )
+                    modifier = Modifier.align(Alignment.TopEnd)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Editar perfil",
+                        tint = TextSecondary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
             }
         }
-    }
-}
-
-@Composable
-private fun CardAction(
-    icon: ImageVector,
-    label: String,
-    tint: Color,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier
-            .clickable(onClick = onClick)
-            .padding(vertical = 10.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(icon, contentDescription = label, tint = tint, modifier = Modifier.size(18.dp))
-        Spacer(modifier = Modifier.height(2.dp))
-        Text(label, style = MaterialTheme.typography.labelSmall, color = tint)
     }
 }

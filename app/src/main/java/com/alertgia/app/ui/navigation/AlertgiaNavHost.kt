@@ -2,6 +2,7 @@ package com.alertgia.app.ui.navigation
 
 import android.app.Activity
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CameraAlt
@@ -107,18 +108,20 @@ fun AlertgiaNavHost() {
                 if (showChrome) {
                     TopAppBar(
                         title = { Text("AlertgIA") },
-                        navigationIcon = {
+                        actions = {
                             IconButton(onClick = { navController.navigate(Screen.ProfileList.route) }) {
                                 Icon(
                                     Icons.Default.AccountCircle,
-                                    contentDescription = if (isSpanish) "Perfiles" else "Profiles"
+                                    contentDescription = if (isSpanish) "Perfiles" else "Profiles",
+                                    tint = AlertgiaGreen,
+                                    modifier = Modifier.size(32.dp)
                                 )
                             }
                         },
                         colors = TopAppBarDefaults.topAppBarColors(
-                            containerColor        = SurfaceCard,
-                            titleContentColor     = TextPrimary,
-                            navigationIconContentColor = AlertgiaGreen
+                            containerColor    = SurfaceCard,
+                            titleContentColor = TextPrimary,
+                            actionIconContentColor = AlertgiaGreen
                         )
                     )
                 }
