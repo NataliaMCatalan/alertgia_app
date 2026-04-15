@@ -1,6 +1,7 @@
 package com.alertgia.app.ui.navigation
 
 sealed class Screen(val route: String) {
+    data object Splash : Screen("splash")
     data object Onboarding : Screen("onboarding")
     data object ProfileList : Screen("profiles")
     data object ProfileEditor : Screen("profile_editor/{profileId}") {

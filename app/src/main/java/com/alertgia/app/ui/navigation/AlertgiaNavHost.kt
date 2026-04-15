@@ -46,6 +46,7 @@ import com.alertgia.app.ui.profile.ProfileListUiState
 import com.alertgia.app.ui.profile.ProfileListViewModel
 import com.alertgia.app.ui.nearby.NearbyScreen
 import com.alertgia.app.ui.onboarding.OnboardingScreen
+import com.alertgia.app.ui.splash.SplashScreen
 import com.alertgia.app.ui.places.MyPlacesScreen
 import com.alertgia.app.ui.profile.ProfileListScreen
 import com.alertgia.app.ui.profileeditor.ProfileEditorScreen
@@ -153,7 +154,7 @@ fun AlertgiaNavHost(
                                     Icons.Default.AccountCircle,
                                     contentDescription = if (isSpanish) "Perfiles" else "Profiles",
                                     tint = AlertgiaGreen,
-                                    modifier = Modifier.size(64.dp)
+                                    modifier = Modifier.size(96.dp)
                                 )
                             }
                         },
@@ -214,9 +215,20 @@ fun AlertgiaNavHost(
         ) { innerPadding ->
             NavHost(
                 navController    = navController,
-                startDestination = if (onboardingComplete) Screen.ScanMode.route else Screen.Onboarding.route,
+                startDestination = Screen.Splash.route,
                 modifier         = Modifier.padding(innerPadding)
             ) {
+                composable(Screen.Splash.route) {
+                    SplashScreen(
+                        onSplashComplete = {
+                            val destination = if (onboardingComplete) Screen.ScanMode.route else Screen.Onboarding.route
+                            navController.navigate(destination) {
+                                popUpTo(Screen.Splash.route) { inclusive = true }
+                            }
+                        }
+                    )
+                }
+
                 composable(Screen.Onboarding.route) {
                     OnboardingScreen(
                         onAccept = {
