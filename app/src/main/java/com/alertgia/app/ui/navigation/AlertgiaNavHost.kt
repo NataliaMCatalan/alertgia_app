@@ -3,7 +3,6 @@ package com.alertgia.app.ui.navigation
 import android.app.Activity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
