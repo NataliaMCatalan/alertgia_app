@@ -2,17 +2,15 @@ package com.alertgia.app.ui.splash
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import com.alertgia.app.R
 import androidx.compose.runtime.Composable
@@ -32,8 +30,9 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alertgia.app.ui.theme.AlertgiaGreen
-import com.alertgia.app.ui.theme.NavyDeep
 import kotlinx.coroutines.delay
+
+private val SplashNavy = Color(0xFF0B1829)
 
 @Composable
 fun SplashScreen(
@@ -55,7 +54,7 @@ fun SplashScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(NavyDeep),
+            .background(SplashNavy),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -65,9 +64,7 @@ fun SplashScreen(
             Image(
                 painter = painterResource(id = R.drawable.ic_alertgia_logo),
                 contentDescription = "AlertgIA logo",
-                modifier = Modifier
-                    .size(140.dp)
-                    .clip(CircleShape)
+                modifier = Modifier.size(140.dp)
             )
             Spacer(modifier = Modifier.height(24.dp))
             Text(
