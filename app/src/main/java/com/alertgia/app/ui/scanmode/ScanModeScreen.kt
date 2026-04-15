@@ -16,19 +16,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.ui.res.painterResource
 import com.alertgia.app.R
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,7 +47,6 @@ import com.alertgia.app.ui.theme.TextSecondary
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScanModeScreen(
-    onOpenDrawer: () -> Unit,
     onNavigateToCamera: () -> Unit,
     onNavigateToSmartMenu: () -> Unit,
     viewModel: ScanModeViewModel = hiltViewModel()
@@ -59,21 +54,7 @@ fun ScanModeScreen(
     val isSpanish = LocalAppLanguage.current == "es"
 
     Scaffold(
-        containerColor = SurfaceBg,
-        topBar = {
-            TopAppBar(
-                title = {},
-                navigationIcon = {
-                    IconButton(onClick = onOpenDrawer) {
-                        Icon(Icons.Default.Menu, contentDescription = "Menu",
-                            tint = TextPrimary)
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = SurfaceCard
-                )
-            )
-        }
+        containerColor = SurfaceBg
     ) { padding ->
         Column(
             modifier = Modifier
