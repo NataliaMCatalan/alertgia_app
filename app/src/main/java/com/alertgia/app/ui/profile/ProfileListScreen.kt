@@ -87,60 +87,6 @@ fun ProfileListScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ── Gradient header ───────────────────────────────────────────
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(NavyLight, NavyMid)
-                        )
-                    )
-                    .padding(horizontal = 20.dp, vertical = 20.dp)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_alertgia_logo),
-                        contentDescription = "AlertgIA",
-                        modifier = Modifier
-                            .size(44.dp)
-                            .clip(CircleShape)
-                    )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Column {
-                        Text(
-                            text = buildAnnotatedString {
-                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) {
-                                    append("Alertg")
-                                }
-                                withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) {
-                                    append("IA")
-                                }
-                            },
-                            fontSize = 26.sp
-                        )
-                        Text(
-                            text = if (isSpanish) "Come seguro, vayas donde vayas"
-                                   else "Eat safely, wherever you go",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = TextSecondary
-                        )
-                    }
-                }
-            }
-
-            // Thin green divider
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(2.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(AlertgiaGreen, AlertgiaGreen.copy(alpha = 0f))
-                        )
-                    )
-            )
-
             // ── Content ───────────────────────────────────────────────────
             when (val state = uiState) {
                 is ProfileListUiState.Loading -> {

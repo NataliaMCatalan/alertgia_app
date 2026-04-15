@@ -70,7 +70,8 @@ private val bottomNavRoutes = setOf(
     Screen.Nearby.route,
     Screen.MyPlaces.route,
     Screen.AlertgiaScore.route,
-    Screen.Settings.route
+    Screen.Settings.route,
+    Screen.ProfileList.route
 )
 
 private val navItemColors @Composable get() = NavigationBarItemDefaults.colors(
@@ -111,6 +112,15 @@ fun AlertgiaNavHost(
     val showChrome   = currentRoute in bottomNavRoutes
     val isSpanish    = language == "es"
 
+    val topBarTitle: String = when (currentRoute) {
+        Screen.ProfileList.route  -> if (isSpanish) "Perfil" else "Profile"
+        Screen.Settings.route     -> if (isSpanish) "Ajustes" else "Settings"
+        Screen.Nearby.route       -> if (isSpanish) "Urgencia" else "Emergency"
+        Screen.MyPlaces.route     -> if (isSpanish) "Mis Sitios" else "My Places"
+        Screen.AlertgiaScore.route -> "AlertgIA Score"
+        else -> if (firstProfileName.isNotBlank()) "Hola, $firstProfileName" else "Hola"
+    }
+
     fun navigate(route: String) {
         navController.navigate(route) {
             popUpTo(Screen.ScanMode.route) { saveState = true }
@@ -125,13 +135,17 @@ fun AlertgiaNavHost(
                 if (showChrome) {
                     TopAppBar(
                         title = {
-                            Text(
-                                text = buildAnnotatedString {
-                                    withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Normal)) {
-                                        append(if (firstProfileName.isNotBlank()) "Hola, $firstProfileName" else "Hola")
+                            if (currentRoute == Screen.AlertgiaScore.route) {
+                                Text(
+                                    text = buildAnnotatedString {
+                                        withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
+                                        withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
+                                        withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
                                     }
-                                }
-                            )
+                                )
+                            } else {
+                                Text(topBarTitle, color = TextPrimary)
+                            }
                         },
                         actions = {
                             IconButton(onClick = { navController.navigate(Screen.ProfileList.route) }) {
