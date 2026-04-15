@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,11 +14,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.LocalHospital
 import androidx.compose.material.icons.filled.LocalPharmacy
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -27,11 +30,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -46,6 +50,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.alertgia.app.ui.theme.AlertgiaGreen
+import com.alertgia.app.ui.theme.DangerRed
+import com.alertgia.app.ui.theme.LocalAppLanguage
+import com.alertgia.app.ui.theme.NavyDeep
+import com.alertgia.app.ui.theme.TextPrimary
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -54,13 +63,10 @@ import com.google.android.gms.location.Priority
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
-fun NearbyScreen(
-    onNavigateBack: () -> Unit,
-    isSpanish: Boolean = false
-) {
+fun NearbyScreen() {
+    val isSpanish = LocalAppLanguage.current == "es"
     val context = LocalContext.current
     val locationPermission = rememberPermissionState(Manifest.permission.ACCESS_FINE_LOCATION)
-    var hasLocation by remember { mutableStateOf(false) }
     var latitude by remember { mutableStateOf(0.0) }
     var longitude by remember { mutableStateOf(0.0) }
     var isLoading by remember { mutableStateOf(false) }
@@ -75,7 +81,6 @@ fun NearbyScreen(
                         if (location != null) {
                             latitude = location.latitude
                             longitude = location.longitude
-                            hasLocation = true
                         }
                         isLoading = false
                     }
@@ -89,35 +94,68 @@ fun NearbyScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (isSpanish) "Ayuda Cercana" else "Nearby Help") },
-                navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                    }
-                }
+                title = { Text(if (isSpanish) "Urgencia" else "Emergency") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = NavyDeep,
+                    titleContentColor = TextPrimary
+                )
             )
         }
     ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(paddingValues)
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Emergency banner
+            Surface(
+                shape = RoundedCornerShape(12.dp),
+                color = DangerRed.copy(alpha = 0.1f),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    modifier = Modifier.padding(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        Icons.Default.Warning,
+                        contentDescription = null,
+                        tint = DangerRed,
+                        modifier = Modifier.size(24.dp)
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        if (isSpanish) "Usa esta sección si estás sufriendo una reacción alérgica ahora mismo."
+                        else "Use this section if you are having an allergic reaction right now.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = DangerRed
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
             if (!locationPermission.status.isGranted) {
-                Spacer(modifier = Modifier.height(48.dp))
-                Icon(Icons.Default.LocationOn, contentDescription = null, modifier = Modifier.size(64.dp), tint = MaterialTheme.colorScheme.primary)
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    if (isSpanish) "Se necesita permiso de ubicación para encontrar farmacias y hospitales cercanos."
-                    else "Location permission is needed to find nearby pharmacies and hospitals.",
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.bodyLarge
+                Spacer(modifier = Modifier.height(24.dp))
+                Icon(
+                    Icons.Default.LocationOn,
+                    contentDescription = null,
+                    modifier = Modifier.size(56.dp),
+                    tint = MaterialTheme.colorScheme.primary
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    if (isSpanish) "Se necesita tu ubicación para encontrar ayuda cercana."
+                    else "Your location is needed to find nearby help.",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(modifier = Modifier.height(12.dp))
                 Button(onClick = { locationPermission.launchPermissionRequest() }) {
-                    Text(if (isSpanish) "Permitir Ubicación" else "Allow Location")
+                    Text(if (isSpanish) "Permitir ubicación" else "Allow location")
                 }
                 return@Scaffold
             }
@@ -129,53 +167,43 @@ fun NearbyScreen(
                 return@Scaffold
             }
 
-            Text(
-                if (isSpanish) "Encuentra ayuda cercana en caso de reacción alérgica"
-                else "Find nearby help in case of allergic reaction",
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center
+            NearbyCard(
+                icon = Icons.Default.LocalPharmacy,
+                title = if (isSpanish) "Farmacias cercanas" else "Nearby Pharmacies",
+                subtitle = if (isSpanish) "Antihistamínicos y medicación de urgencia"
+                           else "Antihistamines and emergency medication",
+                color = AlertgiaGreen,
+                onClick = { openMapsSearch(context, "farmacia", latitude, longitude) }
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            NearbyCard(
+                icon = Icons.Default.LocalHospital,
+                title = if (isSpanish) "Hospitales cercanos" else "Nearby Hospitals",
+                subtitle = if (isSpanish) "Urgencias y atención médica inmediata"
+                           else "Emergency rooms and urgent care",
+                color = DangerRed,
+                onClick = { openMapsSearch(context, "hospital urgencias", latitude, longitude) }
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            NearbyCard(
-                icon = Icons.Default.LocalPharmacy,
-                title = if (isSpanish) "Farmacias Cercanas" else "Nearby Pharmacies",
-                subtitle = if (isSpanish) "Buscar antihistamínicos y medicación" else "Find antihistamines and medication",
-                color = Color(0xFF4CAF50),
-                onClick = {
-                    openMapsSearch(context, "pharmacy", latitude, longitude)
-                }
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            NearbyCard(
-                icon = Icons.Default.LocalHospital,
-                title = if (isSpanish) "Hospitales Cercanos" else "Nearby Hospitals",
-                subtitle = if (isSpanish) "Emergencias y urgencias" else "Emergency rooms and urgent care",
-                color = Color(0xFFF44336),
-                onClick = {
-                    openMapsSearch(context, "hospital", latitude, longitude)
-                }
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Emergency call button
             Button(
                 onClick = {
-                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:112"))
-                    context.startActivity(intent)
+                    context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:112")))
                 },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF44336)),
-                modifier = Modifier.fillMaxWidth()
+                colors = ButtonDefaults.buttonColors(containerColor = DangerRed),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
             ) {
-                Icon(Icons.Default.LocalHospital, contentDescription = null)
-                Spacer(modifier = Modifier.width(8.dp))
+                Icon(Icons.Default.Phone, contentDescription = null)
+                Spacer(modifier = Modifier.width(10.dp))
                 Text(
-                    if (isSpanish) "Llamar Emergencias (112)" else "Call Emergency (112)",
-                    fontWeight = FontWeight.Bold
+                    if (isSpanish) "Llamar al 112 — Emergencias" else "Call 112 — Emergency",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.titleMedium
                 )
             }
         }
@@ -203,7 +231,11 @@ private fun NearbyCard(
             Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(
+                    subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }
@@ -221,7 +253,8 @@ private fun openMapsSearch(context: Context, query: String, lat: Double, lng: Do
     if (intent.resolveActivity(context.packageManager) != null) {
         context.startActivity(intent)
     } else {
-        // Fallback to browser
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/$query/@$lat,$lng,15z")))
+        context.startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/$query/@$lat,$lng,15z"))
+        )
     }
 }

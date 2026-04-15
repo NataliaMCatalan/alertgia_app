@@ -1,65 +1,84 @@
 package com.alertgia.app.ui.theme
 
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
-private val LightColorScheme = lightColorScheme(
-    primary = AlertgiaGreen,
-    onPrimary = Color.White,
-    primaryContainer = AlertgiaGreenLight,
-    onPrimaryContainer = NavyDeep,
-    secondary = NavyMid,
-    onSecondary = Color.White,
-    secondaryContainer = NavyLight,
-    onSecondaryContainer = Color.White,
-    surface = Color(0xFFF8FAF7),
-    onSurface = Color(0xFF1A1C1A),
-    surfaceVariant = Color(0xFFE8F0E4),
-    onSurfaceVariant = Color(0xFF3A4A36),
-    error = DangerRed
+private val AlertgiaColorScheme = lightColorScheme(
+    primary              = BrandGreen,
+    onPrimary            = Color.White,
+    primaryContainer     = BrandGreenLight,
+    onPrimaryContainer   = BrandGreenDark,
+
+    secondary            = TextSecondary,
+    onSecondary          = Color.White,
+    secondaryContainer   = SurfaceSubtle,
+    onSecondaryContainer = TextPrimary,
+
+    background           = SurfaceBg,
+    onBackground         = TextPrimary,
+
+    surface              = SurfaceCard,
+    onSurface            = TextPrimary,
+    surfaceVariant       = SurfaceSubtle,
+    onSurfaceVariant     = TextSecondary,
+
+    outline              = BorderLight,
+    outlineVariant       = BorderMedium,
+
+    error                = StatusDanger,
+    onError              = Color.White,
+    errorContainer       = StatusDangerBg,
+    onErrorContainer     = Color(0xFFB71C1C),
+
+    inverseSurface       = TextPrimary,
+    inverseOnSurface     = SurfaceCard,
+    inversePrimary       = BrandGreenDark,
 )
 
-private val DarkColorScheme = darkColorScheme(
-    primary = AlertgiaGreenLight,
-    onPrimary = NavyDeep,
-    primaryContainer = AlertgiaGreenDark,
-    onPrimaryContainer = AlertgiaGreenLight,
-    secondary = NavyLight,
-    onSecondary = Color.White,
-    secondaryContainer = NavyMid,
-    onSecondaryContainer = Color.White,
-    surface = NavyDeep,
-    onSurface = Color(0xFFE1E3DF),
-    surfaceVariant = NavyMid,
-    onSurfaceVariant = Color(0xFFBFC9C3),
-    error = Color(0xFFFFB4AB)
+// Line-height 1.5× for bodyMedium / bodyLarge improves medical reading comfort.
+// No hardcoded text colours in Typography — the color scheme handles them.
+private val AlertgiaTypography = Typography(
+    displayLarge  = TextStyle(fontWeight = FontWeight.Bold,   fontSize = 57.sp, lineHeight = 64.sp, letterSpacing = (-0.25).sp),
+    displayMedium = TextStyle(fontWeight = FontWeight.Bold,   fontSize = 45.sp, lineHeight = 52.sp),
+    displaySmall  = TextStyle(fontWeight = FontWeight.Bold,   fontSize = 36.sp, lineHeight = 44.sp),
+
+    headlineLarge  = TextStyle(fontWeight = FontWeight.Bold,     fontSize = 32.sp, lineHeight = 40.sp),
+    headlineMedium = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 28.sp, lineHeight = 36.sp),
+    headlineSmall  = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 24.sp, lineHeight = 32.sp),
+
+    titleLarge  = TextStyle(fontWeight = FontWeight.Bold,     fontSize = 22.sp, lineHeight = 33.sp),
+    titleMedium = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 16.sp, lineHeight = 24.sp, letterSpacing = 0.15.sp),
+    titleSmall  = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 14.sp, lineHeight = 21.sp, letterSpacing = 0.1.sp),
+
+    bodyLarge   = TextStyle(fontWeight = FontWeight.Normal, fontSize = 16.sp, lineHeight = 24.sp, letterSpacing = 0.5.sp),
+    bodyMedium  = TextStyle(fontWeight = FontWeight.Normal, fontSize = 14.sp, lineHeight = 21.sp, letterSpacing = 0.25.sp),
+    bodySmall   = TextStyle(fontWeight = FontWeight.Normal, fontSize = 12.sp, lineHeight = 18.sp, letterSpacing = 0.4.sp),
+
+    labelLarge  = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 14.sp, lineHeight = 20.sp, letterSpacing = 0.1.sp),
+    labelMedium = TextStyle(fontWeight = FontWeight.Medium,   fontSize = 12.sp, lineHeight = 16.sp, letterSpacing = 0.5.sp),
+    labelSmall  = TextStyle(fontWeight = FontWeight.Medium,   fontSize = 11.sp, lineHeight = 16.sp, letterSpacing = 0.5.sp),
 )
 
+/**
+ * Root theme wrapper. Provides [LocalAppLanguage] with a safe "es" fallback so
+ * any composable — including Previews — always has a language value.
+ * [AlertgiaNavHost] overrides it with the real dynamic value from DataStore;
+ * an inner CompositionLocalProvider always wins over the outer one.
+ */
 @Composable
-fun AlertgiaTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+fun AlertgiaTheme(content: @Composable () -> Unit) {
+    CompositionLocalProvider(LocalAppLanguage provides "es") {
+        MaterialTheme(
+            colorScheme = AlertgiaColorScheme,
+            typography  = AlertgiaTypography,
+            content     = content
+        )
     }
-
-    MaterialTheme(
-        colorScheme = colorScheme,
-        content = content
-    )
 }

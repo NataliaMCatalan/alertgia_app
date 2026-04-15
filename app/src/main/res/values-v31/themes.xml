@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 12+ (API 31) splash screen — native framework attributes, no library needed.
+  Overrides Theme.Alertgia for API 31+ only.
+-->
+<resources>
+    <style name="Theme.Alertgia" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- Full-screen splash background: white canvas -->
+        <item name="android:windowSplashScreenBackground">#FFFFFF</item>
+
+        <!-- Logo leaf centred in the splash circle, scaled to safe zone -->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground_inset</item>
+
+        <!-- No tinted circle behind the icon — logo PNG has its own frame -->
+        <item name="android:windowSplashScreenIconBackgroundColor">#FFFFFF</item>
+    </style>
+</resources>

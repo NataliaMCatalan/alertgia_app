@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:alertgia.app)",
+      "Bash(awk '{print substr\\($0, 1, length\\($0\\)\\)}')",
+      "Bash(grep:*)",
+      "Bash(./gradlew assembleDebug)",
+      "Bash(JAVA_HOME=\"/Applications/Android Studio.app/Contents/jbr/Contents/Home\" ./gradlew assembleDebug)"
+    ]
+  }
+}

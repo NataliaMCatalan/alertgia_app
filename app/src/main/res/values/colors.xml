@@ -4,4 +4,5 @@
     <color name="warning_amber">#FFFFC107</color>
     <color name="danger_red">#FFF44336</color>
     <color name="primary_teal">#FF009688</color>
+    <color name="launcher_bg">#FF070F1C</color>
 </resources>

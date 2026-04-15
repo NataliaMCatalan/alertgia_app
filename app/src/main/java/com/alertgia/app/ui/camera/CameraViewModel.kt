@@ -25,6 +25,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
@@ -115,7 +116,11 @@ class CameraViewModel @Inject constructor(
 
     private fun loadProfile() {
         viewModelScope.launch {
-            val profile = profileRepository.getProfile(profileId)
+            val profile = if (profileId == -1L) {
+                profileRepository.getAllProfiles().first().firstOrNull()
+            } else {
+                profileRepository.getProfile(profileId)
+            }
             if (profile != null) {
                 _uiState.update {
                     it.copy(

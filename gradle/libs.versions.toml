@@ -22,6 +22,7 @@ mlkitBarcodeScanning = "17.3.0"
 mlkitTextRecognition = "16.0.1"
 playServicesLocation = "21.3.0"
 datastorePreferences = "1.1.1"
+coreSplashscreen = "1.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -87,6 +88,9 @@ play-services-location = { group = "com.google.android.gms", name = "play-servic
 
 # DataStore
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
+
+# Splash Screen
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "coreSplashscreen" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

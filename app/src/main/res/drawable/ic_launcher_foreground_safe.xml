@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Foreground layer for the adaptive launcher icon.
+  20% inset on all sides → logo occupies the central 60% of the 108dp viewport,
+  keeping it well inside the 72dp circular safe zone (66.7% of 108dp).
+-->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_alertgia_logo"
+    android:insetLeft="20%"
+    android:insetTop="20%"
+    android:insetRight="20%"
+    android:insetBottom="20%" />

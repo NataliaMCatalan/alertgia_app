@@ -49,15 +49,18 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.material.icons.filled.CloudOff
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.SyncAlt
 import androidx.compose.material.icons.filled.Visibility
@@ -104,7 +107,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alertgia.app.data.ml.ModelType
 import com.alertgia.app.domain.model.AnalysisMode
 import com.alertgia.app.domain.model.SafetyLevel
+import com.alertgia.app.domain.model.Severity
+import com.alertgia.app.ui.theme.AlertgiaGreen
 import com.alertgia.app.ui.theme.DangerRed
+import com.alertgia.app.ui.theme.LocalAppLanguage
 import com.alertgia.app.ui.theme.SafeGreen
 import com.alertgia.app.ui.theme.WarningAmber
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -115,14 +121,12 @@ import java.util.concurrent.Executors
 
 private val NeutralBlueGrey = Color(0xFF607D8B)
 
-@OptIn(
-    ExperimentalMaterial3Api::class,
-    ExperimentalPermissionsApi::class,
-    ExperimentalLayoutApi::class
-)
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun CameraScreen(
-    onNavigateBack: () -> Unit,
+    onNavigateBack: () -> Unit = {},
+    onNavigateToProfiles: () -> Unit = {},
+    onNavigateToSmartMenu: (Long) -> Unit = {},
     viewModel: CameraViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -130,82 +134,287 @@ fun CameraScreen(
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
+        if (!cameraPermission.status.isGranted) cameraPermission.launchPermissionRequest()
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
         if (!cameraPermission.status.isGranted) {
-            cameraPermission.launchPermissionRequest()
+            PermissionDeniedContent(
+                shouldShowRationale = cameraPermission.status.shouldShowRationale,
+                onRequestPermission = { cameraPermission.launchPermissionRequest() },
+                onOpenSettings = {
+                    context.startActivity(
+                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                            data = Uri.fromParts("package", context.packageName, null)
+                        }
+                    )
+                }
+            )
+            return@Box
+        }
+
+        if (uiState.isLoading) {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text("Loading profile...", color = Color.White)
+            }
+            return@Box
+        }
+
+        MinimalCameraOverlay(
+            uiState = uiState,
+            onFrameAvailable = { imageProxy ->
+                if (uiState.isScanning) viewModel.onFrameAvailable(imageProxy)
+                else imageProxy.close()
+            },
+            onToggleScanning = { viewModel.toggleScanning() },
+            onNavigateBack = onNavigateBack,
+            onNavigateToProfiles = onNavigateToProfiles
+        )
+    }
+}
+
+// ── Minimal Camera Overlay — clean camera + single status button ──────────────
+
+@Composable
+private fun MinimalCameraOverlay(
+    uiState: CameraUiState,
+    onFrameAvailable: (androidx.camera.core.ImageProxy) -> Unit,
+    onToggleScanning: () -> Unit,
+    onNavigateBack: () -> Unit,
+    onNavigateToProfiles: () -> Unit
+) {
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val analysisExecutor = remember { Executors.newSingleThreadExecutor() }
+
+    // ── Severity-based status logic ───────────────────────────────────────
+    // RIESGO   → allergen in profile with Severity.SEVERE
+    // PRECAUCIÓN → allergen in profile with Severity.MODERATE or MILD
+    // SEGURO   → detected food, none match profile allergens
+    // null     → not yet analysed
+    val displayStatus: SafetyLevel? = remember(
+        uiState.detectedLabels, uiState.profile, uiState.scanCount
+    ) {
+        if (uiState.scanCount == 0) return@remember null          // nothing scanned yet
+
+        val profile = uiState.profile
+        val allergenLabels = uiState.detectedLabels.filter { it.isAllergen }
+
+        if (allergenLabels.isEmpty()) return@remember SafetyLevel.SAFE
+
+        if (profile == null) return@remember SafetyLevel.WARNING  // no profile = caution
+
+        val allergyMap = profile.allergies.associate { it.name.lowercase() to it.severity }
+
+        var worst: Severity? = null
+        for (label in allergenLabels) {
+            val lName = label.name.lowercase()
+            val matched = allergyMap.entries
+                .firstOrNull { (key, _) -> lName.contains(key) || key.contains(lName) }
+                ?.value ?: continue
+
+            when (matched) {
+                Severity.SEVERE -> return@remember SafetyLevel.DANGER   // worst case — stop early
+                else            -> if (worst == null) worst = matched
+            }
+        }
+        when (worst) {
+            null -> SafetyLevel.SAFE
+            else -> SafetyLevel.WARNING
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        uiState.profile?.let { "Scanning - ${it.name}" } ?: "Loading...",
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Black.copy(alpha = 0.7f),
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.White
-                )
-            )
-        }
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            if (!cameraPermission.status.isGranted) {
-                PermissionDeniedContent(
-                    shouldShowRationale = cameraPermission.status.shouldShowRationale,
-                    onRequestPermission = { cameraPermission.launchPermissionRequest() },
-                    onOpenSettings = {
-                        context.startActivity(
-                            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                                data = Uri.fromParts("package", context.packageName, null)
-                            }
-                        )
-                    }
-                )
-                return@Scaffold
-            }
-
-            if (uiState.isLoading) {
-                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("Loading profile...", color = MaterialTheme.colorScheme.onSurfaceVariant)
+    Box(modifier = Modifier.fillMaxSize()) {
+        // ── Full-screen camera preview ────────────────────────────────────
+        AndroidView(
+            factory = { ctx ->
+                PreviewView(ctx).also { previewView ->
+                    val future = ProcessCameraProvider.getInstance(ctx)
+                    future.addListener({
+                        val provider = future.get()
+                        val preview = Preview.Builder().build()
+                            .also { it.surfaceProvider = previewView.surfaceProvider }
+                        val analysis = ImageAnalysis.Builder()
+                            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                            .build()
+                            .also { it.setAnalyzer(analysisExecutor) { proxy -> onFrameAvailable(proxy) } }
+                        try {
+                            provider.unbindAll()
+                            provider.bindToLifecycle(lifecycleOwner,
+                                CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis)
+                        } catch (_: Exception) {}
+                    }, ContextCompat.getMainExecutor(ctx))
                 }
-                return@Scaffold
-            }
+            },
+            modifier = Modifier.fillMaxSize()
+        )
 
-            LiveCameraWithOverlay(
-                uiState = uiState,
-                onFrameAvailable = { imageProxy ->
-                    if (uiState.isScanning && uiState.cameraMode == CameraMode.LIVE_SCAN) {
-                        viewModel.onFrameAvailable(imageProxy)
-                    } else {
-                        imageProxy.close()
-                    }
-                },
-                onToggleScanning = { viewModel.toggleScanning() },
-                onCycleMode = { viewModel.cycleAnalysisMode() },
-                onToggleShowAll = { viewModel.toggleShowAllFoods() },
-                onSetRefreshInterval = { viewModel.setRefreshInterval(it) },
-                onSetConfidence = { viewModel.setConfidenceThreshold(it) },
-                onCapturePhoto = { bytes -> viewModel.captureAndAnalyze(bytes) },
-                onSetCameraMode = { viewModel.setCameraMode(it) },
-                onDismissSnapshot = { viewModel.dismissSnapshot() },
-                onSwitchModel = { viewModel.switchModel(it) }
-            )
+        // ── Profile pill — top-left ───────────────────────────────────────
+        uiState.profile?.let { profile ->
+            Row(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(16.dp)
+                    .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(50.dp))
+                    .clickable { onNavigateToProfiles() }
+                    .padding(horizontal = 14.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Icon(Icons.Default.AccountCircle, null,
+                    tint = AlertgiaGreen, modifier = Modifier.size(15.dp))
+                Text(
+                    buildString {
+                        append(profile.name)
+                        profile.allergies.firstOrNull()?.let { append(" · Sin ${it.name}") }
+                    },
+                    color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Medium
+                )
+            }
+        }
+
+        // ── Back — top-right ──────────────────────────────────────────────
+        IconButton(
+            onClick = onNavigateBack,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(12.dp)
+                .size(40.dp)
+                .background(Color.Black.copy(alpha = 0.45f), CircleShape)
+        ) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back",
+                tint = Color.White, modifier = Modifier.size(18.dp))
+        }
+
+        // ── Central status button ─────────────────────────────────────────
+        StatusButton(
+            status = displayStatus,
+            isAnalyzing = uiState.isAnalyzing,
+            isScanning = uiState.isScanning,
+            onTap = onToggleScanning,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
+
+    DisposableEffect(Unit) { onDispose { analysisExecutor.shutdown() } }
+}
+
+// ── Status button — single large circle with colour + label ──────────────────
+
+private val ColorRiesgo    = Color(0xFFE53935)
+private val ColorPrecaucion = Color(0xFFFB8C00)
+private val ColorSeguro    = Color(0xFF43A047)
+private val ColorIdle      = Color(0xFF546E7A)
+
+@Composable
+private fun StatusButton(
+    status: SafetyLevel?,
+    isAnalyzing: Boolean,
+    isScanning: Boolean,
+    onTap: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val isSpanish = LocalAppLanguage.current == "es"
+
+    val bgColor = when (status) {
+        SafetyLevel.DANGER  -> ColorRiesgo
+        SafetyLevel.WARNING -> ColorPrecaucion
+        SafetyLevel.SAFE    -> ColorSeguro
+        null                -> ColorIdle
+    }
+    val label = when (status) {
+        SafetyLevel.DANGER  -> if (isSpanish) "RIESGO"     else "RISK"
+        SafetyLevel.WARNING -> if (isSpanish) "PRECAUCIÓN" else "CAUTION"
+        SafetyLevel.SAFE    -> if (isSpanish) "SEGURO"     else "SAFE"
+        null -> if (isAnalyzing)
+            if (isSpanish) "Analizando..." else "Analysing..."
+        else
+            if (isSpanish) "Apunta al plato" else "Point at dish"
+    }
+    val icon = when (status) {
+        SafetyLevel.DANGER  -> Icons.Default.Warning
+        SafetyLevel.WARNING -> Icons.Default.Warning
+        SafetyLevel.SAFE    -> Icons.Default.Check
+        null                -> Icons.Default.CameraAlt
+    }
+
+    // Pulse animation while analyzing
+    val pulseScale by rememberInfiniteTransition(label = "pulse").animateFloat(
+        initialValue = 1f,
+        targetValue  = if (isAnalyzing && status == null) 1.08f else 1f,
+        label = "scale",
+        animationSpec = infiniteRepeatable(tween(700), RepeatMode.Reverse)
+    )
+    // Glow ring animation when dangerous
+    val glowAlpha by rememberInfiniteTransition(label = "glow").animateFloat(
+        initialValue = 0.25f,
+        targetValue  = if (status == SafetyLevel.DANGER) 0.65f else 0.25f,
+        label = "glow",
+        animationSpec = infiniteRepeatable(tween(600), RepeatMode.Reverse)
+    )
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+        // Outer glow ring (only DANGER)
+        Box(contentAlignment = Alignment.Center) {
+            if (status == SafetyLevel.DANGER) {
+                Box(
+                    modifier = Modifier
+                        .size(190.dp)
+                        .background(ColorRiesgo.copy(alpha = glowAlpha), CircleShape)
+                )
+            }
+            // Main circle button
+            Box(
+                modifier = Modifier
+                    .size((160 * pulseScale).dp)
+                    .background(bgColor, CircleShape)
+                    .clickable(onClick = onTap),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Icon(
+                        icon, contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.size(36.dp)
+                    )
+                    Text(
+                        label,
+                        color = Color.White,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 16.sp,
+                        letterSpacing = 1.sp
+                    )
+                }
+            }
+        }
+
+        // Tap hint when idle
+        if (status != null) {
+            Box(
+                modifier = Modifier
+                    .background(Color.Black.copy(alpha = 0.50f), RoundedCornerShape(50.dp))
+                    .padding(horizontal = 14.dp, vertical = 6.dp)
+            ) {
+                Text(
+                    if (isScanning)
+                        if (isSpanish) "Toca para pausar" else "Tap to pause"
+                    else
+                        if (isSpanish) "Toca para reanudar" else "Tap to resume",
+                    color = Color.White.copy(alpha = 0.75f),
+                    fontSize = 12.sp
+                )
+            }
         }
     }
 }
+
+// ── Legacy full overlay (kept for reference — not used in current flow) ───────
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -220,7 +429,8 @@ private fun LiveCameraWithOverlay(
     onCapturePhoto: (ByteArray) -> Unit = {},
     onSetCameraMode: (CameraMode) -> Unit = {},
     onDismissSnapshot: () -> Unit = {},
-    onSwitchModel: (ModelType) -> Unit = {}
+    onSwitchModel: (ModelType) -> Unit = {},
+    onNavigateToSmartMenu: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -263,6 +473,31 @@ private fun LiveCameraWithOverlay(
         )
 
         // ===== OVERLAYS =====
+
+        // Top-left: Profile Pill
+        uiState.profile?.let { profile ->
+            Row(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(12.dp)
+                    .background(Color.Black.copy(alpha = 0.65f), RoundedCornerShape(50.dp))
+                    .padding(horizontal = 14.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Icon(Icons.Default.AccountCircle, null,
+                    tint = AlertgiaGreen, modifier = Modifier.size(16.dp))
+                Text(
+                    buildString {
+                        append(profile.name)
+                        profile.allergies.firstOrNull()?.let { append(" · Sin ${it.name}") }
+                    },
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+        }
 
         // Top-right: scanning indicator + mode badge
         Column(
@@ -532,6 +767,21 @@ private fun LiveCameraWithOverlay(
                     Icon(
                         imageVector = if (uiState.isScanning && uiState.cameraMode == CameraMode.LIVE_SCAN) Icons.Default.Pause else Icons.Default.PlayArrow,
                         contentDescription = if (uiState.isScanning) "Pause" else "Resume",
+                        tint = Color.White,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+
+                // QR / Smart Menu scan
+                IconButton(
+                    onClick = onNavigateToSmartMenu,
+                    modifier = Modifier
+                        .size(44.dp)
+                        .background(AlertgiaGreen.copy(alpha = 0.9f), CircleShape)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.QrCodeScanner,
+                        contentDescription = "Scan menu QR",
                         tint = Color.White,
                         modifier = Modifier.size(22.dp)
                     )

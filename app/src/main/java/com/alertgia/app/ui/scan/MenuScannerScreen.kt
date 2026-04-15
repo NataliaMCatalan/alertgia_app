@@ -66,6 +66,7 @@ import com.alertgia.app.data.ocr.BarcodeScannerHelper
 import com.alertgia.app.data.ocr.MenuAnalysisResult
 import com.alertgia.app.data.ocr.TextRecognitionHelper
 import com.alertgia.app.ui.theme.DangerRed
+import com.alertgia.app.ui.theme.LocalAppLanguage
 import com.alertgia.app.ui.theme.SafeGreen
 import kotlinx.coroutines.launch
 import java.nio.ByteBuffer
@@ -76,9 +77,9 @@ import java.util.concurrent.Executors
 fun MenuScannerScreen(
     onNavigateBack: () -> Unit,
     allergens: List<String>,
-    restrictedIngredients: Set<String>,
-    isSpanish: Boolean = false
+    restrictedIngredients: Set<String>
 ) {
+    val isSpanish = LocalAppLanguage.current == "es"
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val scope = rememberCoroutineScope()

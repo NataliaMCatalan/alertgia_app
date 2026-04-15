@@ -29,7 +29,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // Only include arm64 — covers 99%+ of modern phones
+        // arm64 for real devices; x86_64 added in debug below for Intel Mac emulator
         ndk {
             abiFilters += listOf("arm64-v8a")
         }
@@ -42,6 +42,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            // x86_64 needed for Android emulator on Intel Mac
+            ndk {
+                abiFilters += listOf("arm64-v8a", "x86_64")
+            }
+        }
         release {
             isMinifyEnabled = true
             proguardFiles(
@@ -142,4 +148,7 @@ dependencies {
 
     // DataStore (language prefs)
     implementation(libs.androidx.datastore.preferences)
+
+    // Splash Screen API
+    implementation(libs.androidx.core.splashscreen)
 }

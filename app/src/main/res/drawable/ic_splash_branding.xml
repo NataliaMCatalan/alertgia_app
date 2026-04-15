@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Branding strip: three green loading dots centred below the splash icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="24dp"
+    android:viewportWidth="120"
+    android:viewportHeight="24">
+
+    <!-- Three dots — corporate green, equal spacing -->
+    <path
+        android:fillColor="#5BBF4A"
+        android:pathData="M48,12 m-5,0 a5,5 0,1 1,10 0 a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="#5BBF4A"
+        android:fillAlpha="0.6"
+        android:pathData="M60,12 m-5,0 a5,5 0,1 1,10 0 a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="#5BBF4A"
+        android:fillAlpha="0.3"
+        android:pathData="M72,12 m-5,0 a5,5 0,1 1,10 0 a5,5 0,1 1,-10 0" />
+</vector>
