@@ -151,17 +151,18 @@ fun AlertgiaNavHost(
                                     if (currentRoute == Screen.AlertgiaScore.route) {
                                         Text(
                                             text = buildAnnotatedString {
-                                                withStyle(SpanStyle(color = TextSecondary)) { append("Alertg") }
-                                                withStyle(SpanStyle(color = AlertgiaGreen)) { append("IA") }
-                                                withStyle(SpanStyle(color = TextSecondary)) { append(" Score") }
+                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
+                                                withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
+                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
                                             },
-                                            style = MaterialTheme.typography.labelMedium
+                                            style = MaterialTheme.typography.titleMedium
                                         )
                                     } else {
                                         Text(
                                             text = sectionTitle,
-                                            style = MaterialTheme.typography.labelMedium,
-                                            color = TextSecondary
+                                            style = MaterialTheme.typography.titleMedium,
+                                            fontWeight = FontWeight.Bold,
+                                            color = TextPrimary
                                         )
                                     }
                                 }
@@ -178,7 +179,7 @@ fun AlertgiaNavHost(
                             }
                         },
                         colors = TopAppBarDefaults.topAppBarColors(
-                            containerColor    = SurfaceCard,
+                            containerColor    = androidx.compose.ui.graphics.Color.White,
                             titleContentColor = TextPrimary,
                             actionIconContentColor = AlertgiaGreen
                         )
