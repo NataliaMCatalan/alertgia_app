@@ -28,14 +28,11 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -53,7 +50,6 @@ import androidx.compose.ui.unit.dp
 import com.alertgia.app.ui.theme.AlertgiaGreen
 import com.alertgia.app.ui.theme.DangerRed
 import com.alertgia.app.ui.theme.LocalAppLanguage
-import com.alertgia.app.ui.theme.NavyDeep
 import com.alertgia.app.ui.theme.TextPrimary
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
@@ -61,7 +57,7 @@ import com.google.accompanist.permissions.rememberPermissionState
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun NearbyScreen() {
     val isSpanish = LocalAppLanguage.current == "es"
@@ -91,17 +87,7 @@ fun NearbyScreen() {
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(if (isSpanish) "Urgencia" else "Emergency") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = NavyDeep,
-                    titleContentColor = TextPrimary
-                )
-            )
-        }
-    ) { paddingValues ->
+    Scaffold { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()

@@ -143,24 +143,25 @@ fun AlertgiaNavHost(
                             Column {
                                 Text(
                                     text = greeting,
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = TextSecondary
+                                    style = MaterialTheme.typography.titleLarge,
+                                    fontWeight = FontWeight.Bold,
+                                    color = TextPrimary
                                 )
                                 if (sectionTitle != null) {
                                     if (currentRoute == Screen.AlertgiaScore.route) {
                                         Text(
                                             text = buildAnnotatedString {
-                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
-                                                withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
-                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
+                                                withStyle(SpanStyle(color = TextSecondary)) { append("Alertg") }
+                                                withStyle(SpanStyle(color = AlertgiaGreen)) { append("IA") }
+                                                withStyle(SpanStyle(color = TextSecondary)) { append(" Score") }
                                             },
-                                            style = MaterialTheme.typography.titleMedium
+                                            style = MaterialTheme.typography.labelMedium
                                         )
                                     } else {
                                         Text(
                                             text = sectionTitle,
-                                            style = MaterialTheme.typography.titleMedium,
-                                            color = TextPrimary
+                                            style = MaterialTheme.typography.labelMedium,
+                                            color = TextSecondary
                                         )
                                     }
                                 }
