@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.sp
 import com.alertgia.app.ui.theme.AlertgiaGreen
 import kotlinx.coroutines.delay
 
-private val SplashNavy = Color(0xFF0B1829)
+private val SplashWhite = Color.White
 
 @Composable
 fun SplashScreen(
@@ -54,7 +54,7 @@ fun SplashScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(SplashNavy),
+            .background(SplashWhite),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -69,7 +69,7 @@ fun SplashScreen(
             Spacer(modifier = Modifier.height(24.dp))
             Text(
                 text = buildAnnotatedString {
-                    withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                    withStyle(SpanStyle(color = Color(0xFF0B1829), fontWeight = FontWeight.Bold)) {
                         append("Alertg")
                     }
                     withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) {
@@ -82,7 +82,7 @@ fun SplashScreen(
             Text(
                 text = "Come seguro, vayas donde vayas",
                 fontSize = 14.sp,
-                color = Color.White.copy(alpha = 0.65f)
+                color = Color(0xFF0B1829).copy(alpha = 0.55f)
             )
         }
     }
