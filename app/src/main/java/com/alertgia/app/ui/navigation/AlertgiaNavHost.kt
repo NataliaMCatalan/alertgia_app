@@ -117,15 +117,6 @@ fun AlertgiaNavHost(
 
     val greeting = if (firstProfileName.isNotBlank()) "Hola, $firstProfileName" else "Hola"
 
-    val sectionTitle: String? = when (currentRoute) {
-        Screen.ProfileList.route   -> if (isSpanish) "Perfil" else "Profile"
-        Screen.Settings.route      -> if (isSpanish) "Ajustes" else "Settings"
-        Screen.Nearby.route        -> if (isSpanish) "Urgencia" else "Emergency"
-        Screen.MyPlaces.route      -> if (isSpanish) "Mis Sitios" else "My Places"
-        Screen.AlertgiaScore.route -> "AlertgIA Score"
-        else -> null  // ScanMode: greeting only
-    }
-
     fun navigate(route: String) {
         navController.navigate(route) {
             popUpTo(Screen.ScanMode.route) { saveState = true }
@@ -147,25 +138,6 @@ fun AlertgiaNavHost(
                                     fontWeight = FontWeight.Bold,
                                     color = TextPrimary
                                 )
-                                if (sectionTitle != null) {
-                                    if (currentRoute == Screen.AlertgiaScore.route) {
-                                        Text(
-                                            text = buildAnnotatedString {
-                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
-                                                withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
-                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
-                                            },
-                                            style = MaterialTheme.typography.titleMedium
-                                        )
-                                    } else {
-                                        Text(
-                                            text = sectionTitle,
-                                            style = MaterialTheme.typography.titleMedium,
-                                            fontWeight = FontWeight.Bold,
-                                            color = TextPrimary
-                                        )
-                                    }
-                                }
                             }
                         },
                         actions = {

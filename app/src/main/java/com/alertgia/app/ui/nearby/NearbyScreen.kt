@@ -96,6 +96,15 @@ fun NearbyScreen() {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(
+                text = if (isSpanish) "Urgencia" else "Emergency",
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = TextPrimary,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            )
             // Emergency banner
             Surface(
                 shape = RoundedCornerShape(12.dp),

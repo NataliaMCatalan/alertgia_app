@@ -65,6 +65,15 @@ fun MyPlacesScreen() {
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
         ) {
+            Text(
+                text = if (isSpanish) "Mis Sitios" else "My Places",
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = TextPrimary,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            )
             // Google account sync banner
             Surface(
                 shape = RoundedCornerShape(12.dp),

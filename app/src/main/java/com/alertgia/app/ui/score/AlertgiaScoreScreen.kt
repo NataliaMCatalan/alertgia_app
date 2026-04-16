@@ -49,7 +49,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alertgia.app.ui.theme.AlertgiaGreen
@@ -111,21 +114,32 @@ fun AlertgiaScoreScreen(onNavigateBack: () -> Unit) {
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
 
-            // ── Certified badge ───────────────────────────────────────────
-            Row(
+            // ── Section title ─────────────────────────────────────────────
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(SurfaceCard)
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
             ) {
-                Icon(Icons.Default.Shield, null, tint = AlertgiaGreen, modifier = Modifier.size(13.dp))
                 Text(
-                    if (isSpanish) "Restaurantes certificados" else "Certified restaurants",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = AlertgiaGreen
+                    text = buildAnnotatedString {
+                        withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
+                        withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
+                        withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
+                    },
+                    style = MaterialTheme.typography.headlineMedium
                 )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.padding(top = 2.dp)
+                ) {
+                    Icon(Icons.Default.Shield, null, tint = AlertgiaGreen, modifier = Modifier.size(13.dp))
+                    Text(
+                        if (isSpanish) "Restaurantes certificados" else "Certified restaurants",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = AlertgiaGreen
+                    )
+                }
             }
 
             // ── Search bar ────────────────────────────────────────────────
