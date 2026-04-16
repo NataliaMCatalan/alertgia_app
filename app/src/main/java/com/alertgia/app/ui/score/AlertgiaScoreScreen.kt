@@ -40,8 +40,6 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -109,38 +107,26 @@ fun AlertgiaScoreScreen(onNavigateBack: () -> Unit) {
     }
 
     Scaffold(
-        containerColor = SurfaceBg,
-        topBar = {
-            TopAppBar(
-                title = {
-                    Column {
-                        Text(
-                            "AlertgIA Score",
-                            style = MaterialTheme.typography.titleLarge,
-                            color = TextPrimary
-                        )
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            Icon(Icons.Default.Shield, null,
-                                tint = AlertgiaGreen, modifier = Modifier.size(11.dp))
-                            Text(
-                                if (isSpanish) "Restaurantes certificados" else "Certified restaurants",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = AlertgiaGreen
-                            )
-                        }
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor  = SurfaceCard,
-                    titleContentColor = TextPrimary
-                )
-            )
-        }
+        containerColor = SurfaceBg
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+
+            // ── Certified badge ───────────────────────────────────────────
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(SurfaceCard)
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Icon(Icons.Default.Shield, null, tint = AlertgiaGreen, modifier = Modifier.size(13.dp))
+                Text(
+                    if (isSpanish) "Restaurantes certificados" else "Certified restaurants",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = AlertgiaGreen
+                )
+            }
 
             // ── Search bar ────────────────────────────────────────────────
             Box(

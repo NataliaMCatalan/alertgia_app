@@ -1,6 +1,7 @@
 package com.alertgia.app.ui.navigation
 
 import android.app.Activity
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.text.SpanStyle
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
@@ -113,13 +115,15 @@ fun AlertgiaNavHost(
     val showChrome   = currentRoute in bottomNavRoutes
     val isSpanish    = language == "es"
 
-    val topBarTitle: String = when (currentRoute) {
-        Screen.ProfileList.route  -> if (isSpanish) "Perfil" else "Profile"
-        Screen.Settings.route     -> if (isSpanish) "Ajustes" else "Settings"
-        Screen.Nearby.route       -> if (isSpanish) "Urgencia" else "Emergency"
-        Screen.MyPlaces.route     -> if (isSpanish) "Mis Sitios" else "My Places"
+    val greeting = if (firstProfileName.isNotBlank()) "Hola, $firstProfileName" else "Hola"
+
+    val sectionTitle: String? = when (currentRoute) {
+        Screen.ProfileList.route   -> if (isSpanish) "Perfil" else "Profile"
+        Screen.Settings.route      -> if (isSpanish) "Ajustes" else "Settings"
+        Screen.Nearby.route        -> if (isSpanish) "Urgencia" else "Emergency"
+        Screen.MyPlaces.route      -> if (isSpanish) "Mis Sitios" else "My Places"
         Screen.AlertgiaScore.route -> "AlertgIA Score"
-        else -> if (firstProfileName.isNotBlank()) "Hola, $firstProfileName" else "Hola"
+        else -> null  // ScanMode: greeting only
     }
 
     fun navigate(route: String) {
@@ -136,16 +140,30 @@ fun AlertgiaNavHost(
                 if (showChrome) {
                     TopAppBar(
                         title = {
-                            if (currentRoute == Screen.AlertgiaScore.route) {
+                            Column {
                                 Text(
-                                    text = buildAnnotatedString {
-                                        withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
-                                        withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
-                                        withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
-                                    }
+                                    text = greeting,
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = TextSecondary
                                 )
-                            } else {
-                                Text(topBarTitle, color = TextPrimary)
+                                if (sectionTitle != null) {
+                                    if (currentRoute == Screen.AlertgiaScore.route) {
+                                        Text(
+                                            text = buildAnnotatedString {
+                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append("Alertg") }
+                                                withStyle(SpanStyle(color = AlertgiaGreen, fontWeight = FontWeight.Bold)) { append("IA") }
+                                                withStyle(SpanStyle(color = TextPrimary, fontWeight = FontWeight.Bold)) { append(" Score") }
+                                            },
+                                            style = MaterialTheme.typography.titleMedium
+                                        )
+                                    } else {
+                                        Text(
+                                            text = sectionTitle,
+                                            style = MaterialTheme.typography.titleMedium,
+                                            color = TextPrimary
+                                        )
+                                    }
+                                }
                             }
                         },
                         actions = {
