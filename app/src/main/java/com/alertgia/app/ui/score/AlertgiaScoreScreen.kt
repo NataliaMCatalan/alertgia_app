@@ -257,13 +257,13 @@ private fun RestaurantCard(restaurant: RestaurantScore, isSpanish: Boolean) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(28.dp))
-            .background(SurfaceCard)
+            .background(androidx.compose.ui.graphics.Color.White)
             .height(IntrinsicSize.Min)
     ) {
         // ── Left color stripe (5 dp) — no full border gradient ────────
         Box(
             modifier = Modifier
-                .width(5.dp)
+                .width(6.dp)
                 .fillMaxHeight()
                 .background(scoreColor)
         )

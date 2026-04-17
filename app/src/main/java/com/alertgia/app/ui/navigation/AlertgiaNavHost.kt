@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.LocalHospital
+import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.Settings
@@ -173,7 +174,7 @@ fun AlertgiaNavHost(
                         NavigationBarItem(
                             selected = currentRoute == Screen.Nearby.route,
                             onClick  = { navigate(Screen.Nearby.route) },
-                            icon     = { Icon(Icons.Filled.LocalHospital, contentDescription = null) },
+                            icon     = { Icon(Icons.Filled.MedicalServices, contentDescription = null) },
                             label    = { Text(if (isSpanish) "Urgencia" else "Emergency") },
                             colors   = navItemColors
                         )
@@ -238,6 +239,7 @@ fun AlertgiaNavHost(
 
                 composable(Screen.ScanMode.route) {
                     ScanModeScreen(
+                        profileName           = firstProfileName,
                         onNavigateToCamera    = { navController.navigate(Screen.Camera.createRoute(-1L)) },
                         onNavigateToSmartMenu = { navController.navigate(Screen.SmartMenu.createRoute(-1L)) }
                     )

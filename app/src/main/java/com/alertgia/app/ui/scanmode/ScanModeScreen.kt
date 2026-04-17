@@ -21,6 +21,8 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.ui.res.painterResource
 import com.alertgia.app.R
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -29,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -47,6 +50,7 @@ import com.alertgia.app.ui.theme.TextSecondary
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScanModeScreen(
+    profileName: String = "",
     onNavigateToCamera: () -> Unit,
     onNavigateToSmartMenu: () -> Unit,
     viewModel: ScanModeViewModel = hiltViewModel()
@@ -54,7 +58,23 @@ fun ScanModeScreen(
     val isSpanish = LocalAppLanguage.current == "es"
 
     Scaffold(
-        containerColor = SurfaceBg
+        containerColor = SurfaceBg,
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = onNavigateToSmartMenu,
+                containerColor = AlertgiaGreen,
+                contentColor = Color.White,
+                elevation = FloatingActionButtonDefaults.elevation(8.dp),
+                shape = CircleShape,
+                modifier = Modifier.size(72.dp)
+            ) {
+                Icon(
+                    Icons.Default.QrCodeScanner,
+                    contentDescription = if (isSpanish) "Escanear carta" else "Scan menu",
+                    modifier = Modifier.size(32.dp)
+                )
+            }
+        }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -72,7 +92,26 @@ fun ScanModeScreen(
                 tint = Color.Unspecified,
                 modifier = Modifier.size(104.dp)
             )
-            Spacer(Modifier.height(16.dp))
+
+            // ── Profile pill ──────────────────────────────────────────────
+            if (profileName.isNotBlank()) {
+                Spacer(Modifier.height(16.dp))
+                Box(
+                    modifier = Modifier
+                        .shadow(elevation = 4.dp, shape = RoundedCornerShape(28.dp))
+                        .background(Color.White, RoundedCornerShape(28.dp))
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                ) {
+                    Text(
+                        text = profileName,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.SemiBold,
+                        color = TextPrimary
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(24.dp))
             Text(
                 if (isSpanish) "¿Cómo quieres analizar?" else "How do you want to scan?",
                 style = MaterialTheme.typography.titleLarge,
@@ -183,7 +222,7 @@ private fun ScanOptionCard(
         // CTA pill
         Box(
             modifier = Modifier
-                .background(accentColor, RoundedCornerShape(50.dp))
+                .background(accentColor, RoundedCornerShape(28.dp))
                 .padding(horizontal = 20.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center
         ) {
